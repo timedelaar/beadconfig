@@ -74,7 +74,7 @@ class Mdb_Kralen_Config_Public {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mdb-kralen-config-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__) . 'bootstrap/css/bootstrap.min.css', array() , '3.3.7');
 	}
 
 	/**
@@ -97,7 +97,9 @@ class Mdb_Kralen_Config_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mdb-kralen-config-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script('angular', plugin_dir_url( __FILE__ ) . 'js/angular/angular.js', array(), '1.5.11', true);
+		wp_enqueue_script('beadConfig', plugin_dir_url( __FILE__ ) . 'js/app/bead-config.js', array(), '1.0', true);
+		wp_enqueue_script('beadConfigController', plugin_dir_url( __FILE__ ) . 'js/app/bead-config.controller.js', array(), '1.0', true);
 	}
 
 }

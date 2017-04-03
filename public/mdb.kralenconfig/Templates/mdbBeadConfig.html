@@ -1,0 +1,17 @@
+﻿<div class="col-md-10 main">
+	<div class="necklace">
+		<mdb-bead bead="bead" 
+				  ng-repeat="bead in ctrl.necklace" 
+				  mdb-color-selector="Templates/mdbColorSelector.html" 
+				  mdb-color-selector-offset-y="20" 
+				  mdb-color-selector-offset-x="20"
+				  mdb-color-selector-close="deselect()">
+		</mdb-bead>
+	</div>
+</div>
+<div class="col-md-2 menu">
+	<div class="form-group">
+		<label for="NecklaceText">Text</label>
+		<input type="text" class="form-control" ng-model="ctrl.necklaceText" />
+	</div>
+</div>

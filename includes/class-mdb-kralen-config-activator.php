@@ -30,7 +30,20 @@ class Mdb_Kralen_Config_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
+	    $post_content = '<div ng-app="BeadConfig"><bead-config></bead-config></div>';
+	    //post status and options
+	    $post = array(
+		'comment_status' => 'closed',
+		'ping_status' =>  'closed' ,
+		'post_name' => 'bead_config',
+		'post_status' => 'publish',
+		'post_type' => 'page',
+		'post_title' => 'MdB bead configurator',
+		'post_content' => $post_content
+	    );
+	    //insert page and save the id
+	    $newvalue = wp_insert_post( $post, false );
+	    //save the id in the database
+	    update_option( 'bead_config', $newvalue );
 	}
-
 }

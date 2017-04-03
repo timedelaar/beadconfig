@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Style/mdb-bead-config.css",
+    "inputFile": "Style/mdb-bead-config.less"
+  },
+  {
+    "outputFile": "App/Main/ColorSelector/mdbColorSelector.css",
+    "inputFile": "App/Main/ColorSelector/mdbColorSelector.less"
+  }
+]

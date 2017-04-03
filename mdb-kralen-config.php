@@ -14,8 +14,8 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Mdb kralen configurator
- * Plugin URI:        -
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Plugin URI:        https://github.com/timedelaar/beadconfig
+ * Description:       An AngularJS bead configurator
  * Version:           1.0.0
  * Author:            Tim
  * Author URI:        -

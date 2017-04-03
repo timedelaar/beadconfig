@@ -30,7 +30,11 @@ class Mdb_Kralen_Config_Deactivator {
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
+	    $bead_config_page_id = get_option('bead_config');
+	    if ($bead_config_page_id == false) {
+		return;
+	    }
+	    wp_delete_post($bead_config_page_id);
 	}
 
 }
