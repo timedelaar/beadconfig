@@ -1,3 +1,3 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig', ['Spinner']);
+	angular.module('MdbBeadConfig', ['Spinner', 'Squared']);
 })();

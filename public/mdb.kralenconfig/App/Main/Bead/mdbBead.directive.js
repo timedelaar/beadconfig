@@ -17,15 +17,16 @@
 		}
 
 		function linkFunc(scope, element, attrs, ctrl) {
-			scope.imageUrl = '/Images/' + scope.bead.letter + '.jpg';
 			var bead = $parse(attrs.bead)(scope);
+
+			scope.setColor = setColor;
 
 			scope.$watch('bead.position', function (position) {
 				if (!position)
 					return;
 
 				element.width(position.size);
-				element.height(element[0].offsetWidth);
+				element.height(position.size);
 				element.css({ 'left': (position.x + position.correctionX), 'top': (position.y + position.correctionY), 'opacity': 1 });
 			}, true);
 
@@ -53,12 +54,19 @@
 				element.removeClass('selected');
 			}
 
-			var closeSelectListener = $rootScope.$on('beadSelected', function (evt, data) {
+			var closeSelectListener = $rootScope.$on('beadSelected', closeSelector);
+
+			function closeSelector (evt, data) {
 				if (bead.selected && data !== bead) {
 					scope.deselect();
 					scope.$emit('mdbColorSelectorClose');
 				}
-			});
+			}
+
+			function setColor(color) {
+				bead.setColor(color);
+				closeSelector();
+			}
 
 			scope.$on('$destroy', function () {
 				closeSelectListener();

@@ -34,7 +34,7 @@ mdb-bead-config {
   display: block;
   width: 10%;
   min-width: 40px;
-  max-width: 100px;
+  max-width: 200px;
   border-radius: 50%;
   overflow: hidden;
   opacity: 0;
@@ -57,7 +57,18 @@ mdb-bead-config {
 mdb-color-selector-window {
   min-width: 100px;
   min-height: 100px;
+  display: inline-block;
+  text-align: left;
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   transition: opacity ease-in-out 0.2s;
+}
+.bead-thumbnail {
+  height: 100%;
+  min-height: 40px;
+  max-height: 60px;
+  border-radius: 50%;
+}
+.bead-thumbnail + .bead-thumbnail {
+  margin-left: 10px;
 }

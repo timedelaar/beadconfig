@@ -1,8 +1,8 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig').directive('mdbColorSelector', ['$compile', '$parse', mdbColorSelector]);
+	angular.module('MdbBeadConfig').directive('mdbColorSelector', ['$compile', '$parse', 'BeadService', mdbColorSelector]);
 	angular.module('MdbBeadConfig').directive('mdbColorSelectorWindow', [mdbColorSelectorWindow]);
 
-	function mdbColorSelector($compile, $parse) {
+	function mdbColorSelector($compile, $parse, beadService) {
 		var directive = {
 			restrict: 'A',
 			priority: 10,
@@ -14,6 +14,7 @@
 
 		function linkFunc(scope, element, attrs) {
 			var bead = scope.bead;
+			scope.colorLines = beadService.getBeadsByLetter(bead.letter);
 			var windowTemplateUrl = attrs.mdbColorSelector;
 			var windowOpen = false;
 
@@ -51,13 +52,15 @@
 				position.top -= colorSelectorWindow.height();
 				colorSelectorWindow.css({ 'top': (position.top + offsetY), 'opacity': 1 });
 				$compile(colorSelectorWindow)(scope);
-				colorSelectorWindow.scope().bead = bead;
 			}
 
 			function closeWindow() {
 				windowOpen = false;
 				colorSelectorWindow.css({ 'opacity': 0 });
-				colorSelectorWindow.remove();
+				$(this).on("webkitTransitionEnd.selectorAnimation otransitionend.selectorAnimation oTransitionEnd.selectorAnimation msTransitionEnd.selectorAnimation transitionend.selectorAnimation", function (event) {
+					colorSelectorWindow.remove();
+					$(this).off('.selectorAnimation');
+				});
 				if (onCloseCallback) {
 					scope.$eval(onCloseCallback);
 				}

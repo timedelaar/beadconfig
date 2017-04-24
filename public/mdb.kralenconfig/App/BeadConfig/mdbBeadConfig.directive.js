@@ -1,9 +1,9 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig').directive('mdbBeadConfig', ['beadFactory', '$window', '$timeout', mdbBeadConfig]);
+	angular.module('MdbBeadConfig').directive('mdbBeadConfig', ['beadFactory', 'BeadService', '$window', '$timeout', mdbBeadConfig]);
 
 	var cx, cy, diameter, paddingLeft, paddingTop, paddingRight, paddingBottom;
 
-	function mdbBeadConfig(Bead, $window, $timeout) {
+	function mdbBeadConfig(Bead, beadService, $window, $timeout) {
 		var directive = {
 			restrict: 'E',
 			scope: true,
@@ -54,7 +54,7 @@
 					for (var i = 0, l = newLength; i < l; i++) {
 						var bead = necklace[i];
 						if (!bead) {
-							necklace[i] = new Bead(text[i]);
+							necklace[i] = new Bead(beadService.getBead('petrol_blue', text[i]));
 						}
 						else if (bead.letter !== text[i]) {
 							bead.letter = text[i];
@@ -106,13 +106,27 @@
 			}
 
 			function updateDiameter(necklace) {
-				var beadSize = (cx * 2) / necklace.length;
+				var beadSize = (cx * 2 - paddingLeft - paddingRight) / necklace.length;
 				var beads = angular.element('mdb-bead');
 				if (beads.length > 0) {
 					diameter = parseInt(getComputedStyle(beads[0]).width.replace('px', ''));
 					var minSize = parseInt(getComputedStyle(beads[0]).minWidth.replace('px', ''));
 					var maxSize = parseInt(getComputedStyle(beads[0]).maxWidth.replace('px', ''));
-					if (beadSize > minSize && beadSize < maxSize) {
+					if (!maxSize) {
+						if (cx >= cy) {
+							maxSize = cy * 2 - paddingTop - paddingBottom;
+						}
+						else {
+							maxSize = cx * 2 - paddingLeft - paddingRight;
+						}
+					}
+					if (beadSize < minSize) {
+						diameter = minSize;
+					}
+					else if (beadSize > maxSize) {
+						diameter = maxSize;
+					}
+					else {
 						diameter = beadSize;
 					}
 				}
