@@ -4,11 +4,14 @@
 		<span class="fa fa-close pull-right"></span>
 	</div>
 	<div class="color-selector-content">
-		<img class="bead-thumbnail" 
-			 ng-repeat="colorLine in colorLines track by colorLine.color"
-			 ng-src="{{::colorLine.imageUrl}}" 
-			 title="{{::colorLine.color}}" 
-			 alt="{{::colorLine.color}}_{{::colorLine.letter}}"
-			 ng-click="setColor(colorLine.color)" />
+		<div class="bead-thumbnail-wrapper"
+			 ng-class="{ 'current': bead.color === colorLine.color}"
+			 ng-repeat="colorLine in colorLines track by colorLine.color">
+			<img class="bead-thumbnail"
+				 ng-src="{{::colorLine.imageUrl}}"
+				 title="{{::colorLine.color}}"
+				 alt="{{::colorLine.color}}_{{::colorLine.letter}}"
+				 ng-click="setColor(colorLine.color)" />
+		</div>
 	</div>
 </div>

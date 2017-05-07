@@ -13,7 +13,13 @@
   padding: 3px 5px;
 }
 .color-selector-title .fa-close {
-  margin-top: 3px;
+  margin-right: -5px;
+  margin-left: 0;
+  padding: 3px 5px;
+  cursor: pointer;
+}
+.color-selector-title .fa-close:hover {
+  color: darkred;
 }
 .color-selector-content {
   min-height: 20px;

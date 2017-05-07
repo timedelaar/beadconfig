@@ -27,7 +27,7 @@
 
 				element.width(position.size);
 				element.height(position.size);
-				element.css({ 'left': (position.x + position.correctionX), 'top': (position.y + position.correctionY), 'opacity': 1 });
+				element.css({ 'left': position.x + position.correctionX, 'top': position.y + position.correctionY, 'opacity': 1 });
 			}, true);
 
 			//scope.$watch('total', function (newVal, oldVal) {
@@ -49,10 +49,10 @@
 				}
 			}
 
-			scope.deselect = function() {
+			scope.deselect = function () {
 				bead.selected = false;
 				element.removeClass('selected');
-			}
+			};
 
 			var closeSelectListener = $rootScope.$on('beadSelected', closeSelector);
 
@@ -65,7 +65,7 @@
 
 			function setColor(color) {
 				bead.setColor(color);
-				closeSelector();
+				//closeSelector();
 			}
 
 			scope.$on('$destroy', function () {

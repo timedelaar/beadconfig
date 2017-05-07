@@ -1,17 +1,39 @@
-﻿<div class="col-md-10 main">
-	<div class="necklace">
-		<mdb-bead bead="bead" 
-				  ng-repeat="bead in ctrl.necklace" 
-				  mdb-color-selector="Templates/mdbColorSelector.html" 
-				  mdb-color-selector-offset-y="20" 
-				  mdb-color-selector-offset-x="20"
-				  mdb-color-selector-close="deselect()">
-		</mdb-bead>
-	</div>
-</div>
-<div class="col-md-2 menu">
+﻿<div class="col-md-2 col-md-push-10 menu">
 	<div class="form-group">
 		<label for="NecklaceText">Text</label>
 		<input type="text" class="form-control" ng-model="ctrl.necklaceText" />
+	</div>
+	<div class="form-group">
+		<div class="form-horizontal col-xs-12 prices">
+			<div class="form-group">
+				<label class="control-label col-md-8">{{ctrl.amounts.letterBeads}} letter kralen:</label>
+				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.letterBeads}}</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsSmall}} tussen kralen (klein):</label>
+				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.spacerBeadsSmall}}</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsBig}} tussen kralen (groot):</label>
+				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.spacerBeadsBig}}</div>
+			</div>
+			<div class="form-group line">
+			</div>
+			<div class="form-group total">
+				<label class="control-label col-md-8">Totaal:</label>
+				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.total}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-10 col-md-pull-2 main">
+	<div class="necklace">
+		<mdb-bead bead="bead"
+				  ng-repeat="bead in ctrl.necklace"
+				  mdb-color-selector="Templates/mdbColorSelector.html"
+				  mdb-color-selector-offset-y="20"
+				  mdb-color-selector-offset-x="20"
+				  mdb-color-selector-close="deselect()">
+		</mdb-bead>
 	</div>
 </div>
