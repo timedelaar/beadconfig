@@ -1,9 +1,14 @@
 ﻿<div>
 	<div class="color-selector-title">
-		Select a color from a variety of color lines
+		Selecteer een kleur
 		<span class="fa fa-close pull-right"></span>
 	</div>
 	<div class="color-selector-content">
+		<div class="size-select" ng-if="::bead.type === 'spacer'">
+			<div class="checkbox">
+				<label><input type="checkbox" mdb-checkbox ng-model="bead.size" ng-true-value="'big'" ng-false-value="'small'" ng-change="ctrl.updatePrices(ctrl.necklace)" />Groot</label>
+			</div>
+		</div>
 		<div class="bead-thumbnail-wrapper"
 			 ng-class="{ 'current': bead.color === colorLine.color}"
 			 ng-repeat="colorLine in colorLines track by colorLine.color">

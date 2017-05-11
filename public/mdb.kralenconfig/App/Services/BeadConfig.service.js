@@ -8,6 +8,9 @@
 
 		var beads;
 
+		service.loading;
+
+		service.loadBeads = loadBeads;
 		service.getBeads = getBeads;
 		service.getColorLines = getColorLines;
 		service.getBeadsByLetter = getBeadsByLetter;
@@ -17,7 +20,7 @@
 		loadBeads();
 
 		function loadBeads() {
-			return $http({
+			service.loading = $http({
 				method: 'GET',
 				url: '/App/Services/beads.json'
 			}).then(function success(response) {
@@ -25,6 +28,7 @@
 			}, function error(response) {
 				console.log('Error loading beads', response);
 			});
+			return service.loading;
 		}
 
 		function getBeads() {
@@ -41,7 +45,7 @@
 				var bead = beads[color][letter];
 				result.push(bead);
 			}
-			return result
+			return result;
 		}
 
 		function getBeadsByColor(color) {
@@ -54,6 +58,8 @@
 		}
 
 		function getBead(color, letter) {
+			if (letter === ' ')
+				letter = '_';
 			var bead = angular.copy(beads[color][letter]);
 			return bead;
 		}

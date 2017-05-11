@@ -80,6 +80,7 @@
     <Content Include="App\Spinner\spinner.css" />
     <Content Include="App\Spinner\Spinner.directive.js" />
     <Content Include="App\Squared\squared.directive.js" />
+    <Content Include="Content\mdb-controls\mdb-controls.js" />
     <Content Include="Images\bead.jpg" />
     <Content Include="packages.config" />
     <Content Include="Content\angular-1.5.11\angular-1.5.11\angular-animate.min.js.map" />
@@ -382,6 +383,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\mdb-controls\mdb-controls.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

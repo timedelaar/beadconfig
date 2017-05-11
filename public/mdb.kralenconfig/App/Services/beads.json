@@ -1,5 +1,13 @@
 ﻿{
 	"concrete_grey": {
+		"_": {
+			"color": "concrete_grey",
+			"letter": "_",
+			"imageUrl": "/Images/ConcreteGrey/_.jpg",
+			"price": 2.00,
+			"type": "spacer",
+			"size": "small"
+		},
 		"0": {
 			"color": "concrete_grey",
 			"letter": "0",
@@ -254,6 +262,14 @@
 		}
 	},
 	"petrol_blue": {
+		"_": {
+			"color": "petrol_blue",
+			"letter": "_",
+			"imageUrl": "/Images/PetrolBlue/_.jpg",
+			"price": 2.00,
+			"type": "spacer",
+			"size": "small"
+		},
 		"0": {
 			"color": "petrol_blue",
 			"letter": "0",

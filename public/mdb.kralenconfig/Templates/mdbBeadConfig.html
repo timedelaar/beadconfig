@@ -1,20 +1,35 @@
 ﻿<div class="col-md-2 col-md-push-10 menu">
 	<div class="form-group">
-		<label for="NecklaceText">Text</label>
-		<input type="text" class="form-control" ng-model="ctrl.necklaceText" />
+		<button class="btn btn-primary btn-sm" ng-click="ctrl.save()"><span class="fa fa-save"></span></button>
+		<button class="btn btn-primary btn-sm" ng-click="ctrl.load()"><span class="fa fa-folder-open"></span></button>
 	</div>
 	<div class="form-group">
-		<div class="form-horizontal col-xs-12 prices">
+		<label for="NecklaceText">Text</label>
+		<input type="text" class="form-control" ng-model="ctrl.necklaceText" ng-trim="false" id="NecklaceText" />
+	</div>
+	<div class="form-group">
+		<label for="LaceType">Veter type</label>
+		<select class="form-control" ng-model="ctrl.laceType">
+			<option value="round">rond</option>
+			<option value="square">vierkant</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<div class="form-horizontal prices">
 			<div class="form-group">
-				<label class="control-label col-md-8">{{ctrl.amounts.letterBeads}} letter kralen:</label>
+				<label class="control-label col-md-8">{{ctrl.amounts.lace}}&nbsp;Veter:</label>
+				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.lace}}</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-8">{{ctrl.amounts.letterBeads}}&nbsp;letter kralen:</label>
 				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.letterBeads}}</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsSmall}} tussen kralen (klein):</label>
+				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsSmall}}&nbsp;tussen kralen (klein):</label>
 				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.spacerBeadsSmall}}</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsBig}} tussen kralen (groot):</label>
+				<label class="control-label col-md-8">{{ctrl.amounts.spacerBeadsBig}}&nbsp;tussen kralen (groot):</label>
 				<div class="col-md-4 price">€&nbsp;{{ctrl.prices.spacerBeadsBig}}</div>
 			</div>
 			<div class="form-group line">
@@ -25,6 +40,16 @@
 			</div>
 		</div>
 	</div>
+	<div class="form-group">
+		<div class="checkbox">
+			<label><input type="checkbox" ng-model="ctrl.confirm" mdb-checkbox />Ik heb de spelling gecontroleerd</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-primary btn-block" ng-click="ctrl.order()" ng-disabled="!ctrl.confirm">
+			<span class="fa fa-shopping-cart"></span>&nbsp;&nbsp;Plaats in winkelwagen
+		</button>
+	</div>
 </div>
 <div class="col-md-10 col-md-pull-2 main">
 	<div class="necklace">
@@ -32,7 +57,7 @@
 				  ng-repeat="bead in ctrl.necklace"
 				  mdb-color-selector="Templates/mdbColorSelector.html"
 				  mdb-color-selector-offset-y="20"
-				  mdb-color-selector-offset-x="20"
+				  mdb-color-selector-offset-x="-40"
 				  mdb-color-selector-close="deselect()">
 		</mdb-bead>
 	</div>

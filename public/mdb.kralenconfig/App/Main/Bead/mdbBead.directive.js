@@ -27,7 +27,7 @@
 
 				element.width(position.size);
 				element.height(position.size);
-				element.css({ 'left': position.x + position.correctionX, 'top': position.y + position.correctionY, 'opacity': 1 });
+				element.css({ 'left': position.x + position.correctionX, 'top': position.y + position.correctionY, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
 			}, true);
 
 			//scope.$watch('total', function (newVal, oldVal) {

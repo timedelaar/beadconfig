@@ -47,10 +47,10 @@
 			function openWindow() {
 				windowOpen = true;
 				var position = element.position();
-				colorSelectorWindow.css({ 'left': position.left + offsetX + 'px', 'z-index': 10, 'opacity': 0 });
+				colorSelectorWindow.css({ 'left': Math.round(position.left + offsetX) + 'px', 'z-index': 10, 'opacity': 0 });
 				colorSelectorWindow.insertAfter(element);
 				position.top -= colorSelectorWindow.height();
-				colorSelectorWindow.css({ 'top': position.top + offsetY, 'opacity': 1 });
+				colorSelectorWindow.css({ 'top': Math.round(position.top + offsetY), 'opacity': 1 });
 				$compile(colorSelectorWindow)(scope);
 			}
 

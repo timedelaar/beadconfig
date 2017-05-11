@@ -1,0 +1,39 @@
+﻿input[mdb-checkbox], input[mdb-radio] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	cursor: pointer;
+	border: 2px solid black;
+	padding: 5px;
+	background-color: transparent;
+	margin-top: 3px;
+
+	&:checked + .mdb-control-label {
+		display: inline-block;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+input[mdb-radio], input[mdb-radio] + .mdb-control-label {
+	border-radius: 50%;
+}
+
+input + .mdb-control-label {
+	min-height: unset;
+	padding: 0;
+}
+
+.mdb-control-label {
+	display: none;
+	width: 6px;
+	height: 6px;
+	background-color: black;
+	position: absolute;
+	top: 7px;
+	left: 4px;
+	pointer-events: none;
+	cursor: pointer;
+}

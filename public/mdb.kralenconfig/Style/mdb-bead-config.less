@@ -1,11 +1,17 @@
-﻿@primary: orange;
+﻿@import "../Content/mdb-controls/mdb-controls.less";
+
+@primary: orange;
 @selected-color: @primary;
 @text-color: lighten(black, 20%);
 @border-color: darken(@primary, 10%);
+@background-color: white;
+
+@menu-background-color: white;
 
 @color-selector-border-color: darken(@primary, 10%);
-@color-selector-background: fade(@primary, 30%);
-@color-selector-text-color: @text-color;
+@color-selector-background: darken(white, 20%);
+@color-selector-text-color: white;
+@color-selector-title-background: @primary;
 
 body {
 	color: @text-color;
@@ -56,6 +62,7 @@ mdb-bead-config {
 	width: 10%;
 	min-width: 40px;
 	max-width: 150px;
+	max-height: 150px;
 	border-radius: 50%;
 	overflow: hidden;
 	opacity: 0;
@@ -91,13 +98,17 @@ mdb-bead-config {
 
 	.prices {
 		border: 1px solid @primary;
+		padding: 0px 5px;
 
 		.form-group {
 			margin-bottom: 5px;
+			margin-left: 0;
+			margin-right: 0;
+
 
 			&.line {
 				border-top: 1px solid @primary;
-				margin: 0;
+				margin: 0px 10px;
 				height: 1px;
 			}
 
@@ -133,6 +144,12 @@ mdb-color-selector-window {
 
 	.color-selector-title {
 		border-color: @color-selector-border-color;
+		background-color: @color-selector-title-background;
+	}
+
+	.size-select .checkbox {
+		margin-top: 0px;
+		margin-bottom: 4px;
 	}
 }
 
@@ -158,4 +175,34 @@ mdb-color-selector-window {
 .bead-thumbnail {
 	min-height: 40px;
 	max-height: 60px;
+}
+
+.btn-primary {
+	background-color: @primary;
+	border-color: darken(@primary, 15%);
+	color: white;
+	outline: none;
+	font-size: 15px;
+	border-radius: 0;
+
+	&:hover, &:focus, &[disabled]:hover, &[disabled]:focus {
+		background-color: darken(@primary, 5%);
+		border-color: darken(@primary, 15%);
+		color: white;
+		outline: none;
+	}
+
+	&:active, &:active:hover {
+		background-color: darken(@primary, 15%);
+		border-color: darken(@primary, 15%);
+		color: white;
+		outline: none;
+	}
+}
+
+input[mdb-checkbox], input[mdb-radio] {
+	border-color: @primary;
+	+ .mdb-control-label {
+		background-color: @primary;
+	}
 }

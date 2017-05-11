@@ -2,7 +2,7 @@
 	angular.module('MdbBeadConfig').factory('beadFactory', ['BeadService', beadFactory]);
 
 	function beadFactory(beadService) {
-		return function Bead (beadPrototype) {
+		return function Bead(beadPrototype) {
 			var bead = this;
 
 			bead.selected = false;
@@ -19,6 +19,6 @@
 					bead[key] = angular.copy(newPrototype[key]);
 				}
 			}
-		}
+		};
 	}
 })();
