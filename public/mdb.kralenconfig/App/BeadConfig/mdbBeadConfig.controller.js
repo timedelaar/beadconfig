@@ -1,20 +1,23 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig').controller('mdbBeadConfigController', ['$scope', '$cookies', 'beadFactory', 'BeadService', '$timeout', Controller]);
+	angular.module('MdbBeadConfig').controller('mdbBeadConfigController', ['$scope', 'beadFactory', 'BeadService', '$window', Controller]);
 
-	function Controller($scope, $cookies, Bead, beadService) {
+	function Controller($scope, Bead, beadService, $window) {
 		var ctrl = this;
 
+		ctrl.defaultColor = 'army_green';
 		ctrl.laceType = 'round';
 		ctrl.necklaceText = '';
 		ctrl.necklace = [];
 		ctrl.prices = {};
 		ctrl.amounts = {};
 		ctrl.ordered = false;
+		ctrl.localStorage = window.localStorage;
+		ctrl.baseUrl = baseUrl;
 
 		ctrl.updatePrices = updatePrices;
 		ctrl.save = save;
 		ctrl.load = load;
-		ctrl.order = order;
+		ctrl.addToCart = addToCart;
 
 		load();
 		window.onbeforeunload = save;
@@ -41,20 +44,20 @@
 
 			for (var index = 0, length = necklace.length; index < length; index++) {
 				var bead = necklace[index];
-				total += bead.price;
+				total += parseFloat(bead.price);
 				switch (bead.type) {
 					case 'letter_bead':
-						letterBeadsSum += bead.price;
+						letterBeadsSum += parseFloat(bead.price);
 						letterBeads++;
 						break;
-					case 'spacer':
-						if (bead.size === 'small') {
-							spacerBeadsSmallSum += bead.price;
-							spacerBeadsSmall++;
+					case 'spacer_bead':
+						if (bead.size === 'big') {
+							spacerBeadsBigSum += parseFloat(bead.price);
+							spacerBeadsBig++;
 						}
 						else {
-							spacerBeadsBigSum += bead.price;
-							spacerBeadsBig++;
+							spacerBeadsSmallSum += parseFloat(bead.price);
+							spacerBeadsSmall++;
 						}
 						break;
 				}
@@ -85,8 +88,13 @@
 		}
 
 		function save() {
-			if (ctrl.ordered)
+			if (ctrl.ordered || typeof ctrl.localStorage === 'undefined')
 				return;
+
+			if (ctrl.necklace.length === 0) {
+				ctrl.localStorage.removeItem('necklace');
+				return;
+			}
 
 			var cookie = {
 				laceType: ctrl.laceType,
@@ -101,29 +109,57 @@
 				});
 			}
 
-			$cookies.putObject('necklace', cookie);
+			ctrl.localStorage.setItem('necklace', JSON.stringify(cookie));
 		}
 
 		function load() {
-			var cookie = $cookies.get('necklace');
-			if (!cookie)
+			if (typeof ctrl.localStorage === 'undefined') {
+				beadService.stopSpinner();
 				return;
+			}
 
-			cookie = JSON.parse(cookie);
+			var cookie = localStorage.getItem('necklace');
 			reset();
 			beadService.loading.then(function () {
+				ctrl.defaultColor = beadService.getColors()[0];
+				if (!cookie) {
+					beadService.stopSpinner();
+					return;
+				}
+
+				cookie = JSON.parse(cookie);
 				ctrl.laceType = cookie.laceType;
 				for (var i = 0, l = cookie.necklace.length; i < l; i++) {
-					var bead = new Bead(beadService.getBead(cookie.necklace[i].color, cookie.necklace[i].letter));
+					var bead = new Bead(beadService.getBead(cookie.necklace[i].color, cookie.necklace[i].letter, ctrl.defaultColor));
 					ctrl.necklace.push(bead);
 					ctrl.necklaceText += bead.letter;
 				}
+				beadService.stopSpinner();
 			});
 		}
 
-		function order() {
-			ctrl.ordered = true;
-			$cookies.remove('necklace');
+		function addToCart() {
+			var order = {
+				necklace: [],
+				laceType: ctrl.laceType
+			};
+			for (var index = 0, length = ctrl.necklace.length; index < length; index++) {
+				var bead = ctrl.necklace[index];
+				order.necklace.push({ color: bead.color, letter: bead.letter, variation_id: bead.variation_id });
+			}
+			beadService.addToCart(order).then(function success(response) {
+				ctrl.ordered = true;
+
+				if (typeof ctrl.localStorage === 'undefined')
+					return;
+
+				ctrl.localStorage.removeItem('necklace');
+				if (!debug)
+					$window.location.assign('https://' + $window.location.host + '/cart/');
+			}, function error(response) {
+				console.log(response);
+				throw new Error('Error adding necklace to cart!');
+			});
 		}
 	}
 })();

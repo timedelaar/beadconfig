@@ -13,7 +13,7 @@
 				bead[key] = angular.copy(beadPrototype[key]);
 			}
 
-			function setColor(color) {
+			function setColor(color, evt) {
 				var newPrototype = beadService.getBead(color, bead.letter);
 				for (var key in newPrototype) {
 					bead[key] = angular.copy(newPrototype[key]);

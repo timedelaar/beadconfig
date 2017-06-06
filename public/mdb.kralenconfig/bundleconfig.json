@@ -1,0 +1,27 @@
+[
+	{
+		"outputFileName": "dist/js/mdb-bead-config.js",
+		"inputFiles": [
+			"App/mdbBeadConfig.js",
+			"App/BeadConfig/mdbBeadConfig.controller.js",
+			"App/BeadConfig/mdbBeadConfig.directive.js",
+			"App/Main/Bead/mdbBead.directive.js",
+			"App/Main/Bead/mdbBead.factory.js",
+			"App/Main/ColorSelector/mdbColorSelector.directive.js",
+			"App/Services/BeadConfig.service.js"
+		]
+	},
+	{
+		"outputFileName": "Content/mdb-controls/mdb-controls.min.js",
+		"inputFiles": [
+			"Content/mdb-controls/mdb-controls.js"
+		]
+	},
+	{
+		"outputFileName": "dist/js/mdb-bead-config-settings.js",
+		"inputFiles": [
+			"SettingsController/BeadConfigSettingsController.js",
+			"SettingsController/BeadConfigSettingsService.js"
+		]
+	}
+]

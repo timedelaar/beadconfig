@@ -12,14 +12,19 @@
   text-align: center;
   padding: 3px 5px;
 }
+.color-selector-title .glyphicon-remove,
 .color-selector-title .fa-close {
   margin-right: -5px;
   margin-left: 0;
   padding: 3px 5px;
   cursor: pointer;
 }
+.color-selector-title .glyphicon-remove:hover,
 .color-selector-title .fa-close:hover {
   color: darkred;
+}
+.color-selector-title .glyphicon-remove {
+  top: -2px;
 }
 .color-selector-content {
   min-height: 20px;

@@ -6,5 +6,9 @@
   {
     "outputFile": "App/Main/ColorSelector/mdbColorSelector.css",
     "inputFile": "App/Main/ColorSelector/mdbColorSelector.less"
+  },
+  {
+    "outputFile": "Content/mdb-controls/mdb-controls.css",
+    "inputFile": "Content/mdb-controls/mdb-controls.less"
   }
 ]

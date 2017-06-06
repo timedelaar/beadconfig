@@ -1,13 +1,13 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig').directive('mdbBeadConfig', ['beadFactory', 'BeadService', '$window', '$timeout', mdbBeadConfig]);
+	angular.module('MdbBeadConfig').directive('mdbBeadConfig', ['beadFactory', 'BeadService', '$window', '$timeout', '$rootScope', mdbBeadConfig]);
 
 	var cx, cy, diameter, paddingLeft, paddingTop, paddingRight, paddingBottom;
 
-	function mdbBeadConfig(Bead, beadService, $window, $timeout) {
+	function mdbBeadConfig(Bead, beadService, $window, $timeout, $rootScope) {
 		var directive = {
 			restrict: 'E',
 			scope: true,
-			templateUrl: '/Templates/mdbBeadConfig.html',
+			templateUrl: baseUrl + '/Templates/mdbBeadConfig.html',
 			controller: 'mdbBeadConfigController',
 			controllerAs: 'ctrl',
 			link: linkFunc
@@ -19,7 +19,7 @@
 			updatePadding();
 			updateCenter();
 			beadService.loading.then(function () {
-				scope.fakeBead = new Bead(beadService.getBead('petrol_blue', 'a'));
+				scope.fakeBead = new Bead(beadService.getBead(ctrl.defaultColor, 'a'));
 				scope.fakeBead.position = { x: -1000, y: -1000 };
 				element.append('<mdb-bead bead="fakeBead" class="bead"></mdb-bead>');
 			});
@@ -28,6 +28,7 @@
 
 			scope.$watchCollection('ctrl.necklace', positionBeads);
 			angular.element($window).on('resize', function () {
+				$rootScope.$broadcast('mdbColorSelectorClose');
 				$timeout(function () {
 					updateCenter();
 					positionBeads(ctrl.necklace);
@@ -55,7 +56,7 @@
 					for (var i = 0, l = newLength; i < l; i++) {
 						var bead = necklace[i];
 						if (!bead) {
-							necklace[i] = new Bead(beadService.getBead('petrol_blue', text[i]));
+							necklace[i] = new Bead(beadService.getBead(ctrl.defaultColor, text[i]));
 						}
 						else if (bead.letter !== text[i]) {
 							if (bead.letter === '_' && text[i] === ' ')

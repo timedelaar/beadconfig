@@ -2,3 +2,80 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+#wpcontent {
+	padding: 0 20px;
+}
+
+h2 {
+	border-bottom: 1px solid #dddddd;
+	box-shadow: 0 1px 3px #dddddd;
+	padding-bottom: 10px;
+	margin-bottom: 40px;
+}
+
+.tab-pane {
+	border: 1px solid #dddddd;
+	border-top: none;
+	padding: 20px;
+	background-color: white;
+	margin-bottom: 30px;
+}
+
+.nav-tabs > li > a {
+	border-radius: 0;
+}
+
+.nav-tabs a:focus {
+	box-shadow: none;
+	outline: none;
+}
+
+.wp-admin .form-control {
+	height: 34px;
+	line-height: 1.42857143;
+	padding: 6px 12px;
+}
+
+.loader-background {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 2;
+	background-color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.6);
+	top: 0;
+	left: 0;
+}
+
+.loader {
+	width: 25px;
+	height: 25px;
+	border: 5px solid gray;
+	border-top-color: black;
+	border-radius: 50%;
+	position: fixed;
+	z-index: 3;
+	animation: spin 1s linear infinite;
+	left: calc(50vw - 13px);
+	top: calc(50vh - 13px);
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.letter-group .lower {
+	margin-top: 34px;
+}
+
+.letter-group div[ngf-select] {
+	display: inline-block;
+}
+
+.letter-group .thumb {
+	margin-left: 10px;
+	width: 100px;
+	height: 100px;
+}

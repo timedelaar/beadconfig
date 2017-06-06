@@ -53,6 +53,8 @@ class Mdb_Kralen_Config_Public {
 		$this->version = $version;
 
 	}
+	
+	
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
@@ -72,9 +74,14 @@ class Mdb_Kralen_Config_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		function mdb_bead_config_styles() {
+		    wp_enqueue_style( 'mdbControls', plugin_dir_url(__FILE__) . 'controls/mdb-controls.min.css', array() , '1.0');
+		    wp_enqueue_style( 'beadConfig', plugin_dir_url(__FILE__) . 'css/mdb-bead-config.min.css', array() , '1.0');
+		}
+		
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/mdb-kralen-config-public.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'bootstrap', plugin_dir_url(__FILE__) . 'bootstrap/css/bootstrap.min.css', array() , '3.3.7');
+		add_action('wp_enqueue_scripts', 'mdb_bead_config_styles', 20);
 	}
 
 	/**
@@ -98,8 +105,8 @@ class Mdb_Kralen_Config_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mdb-kralen-config-public.js', array( 'jquery' ), $this->version, false );
 		wp_enqueue_script('angular', plugin_dir_url( __FILE__ ) . 'js/angular/angular.js', array(), '1.5.11', true);
-		wp_enqueue_script('beadConfig', plugin_dir_url( __FILE__ ) . 'js/app/bead-config.js', array(), '1.0', true);
-		wp_enqueue_script('beadConfigController', plugin_dir_url( __FILE__ ) . 'js/app/bead-config.controller.js', array(), '1.0', true);
+		wp_enqueue_script('mdbControls', plugin_dir_url( __FILE__ ) . 'controls/mdb-controls.min.js', array(), '1.0', true);
+		wp_enqueue_script('beadConfig', plugin_dir_url( __FILE__ ) . 'js/app/mdb-bead-config.js', array(), '1.0', true);
 	}
 
 }

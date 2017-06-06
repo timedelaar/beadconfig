@@ -80,7 +80,33 @@
     <Content Include="App\Spinner\spinner.css" />
     <Content Include="App\Spinner\Spinner.directive.js" />
     <Content Include="App\Squared\squared.directive.js" />
+    <Content Include="Content\mdb-controls\mdb-controls.css">
+      <DependentUpon>mdb-controls.less</DependentUpon>
+    </Content>
     <Content Include="Content\mdb-controls\mdb-controls.js" />
+    <Content Include="Content\mdb-controls\mdb-controls.min.css">
+      <DependentUpon>mdb-controls.css</DependentUpon>
+    </Content>
+    <Content Include="Content\mdb-controls\mdb-controls.min.js">
+      <DependentUpon>mdb-controls.js</DependentUpon>
+    </Content>
+    <Content Include="dist\controls\mdb-controls.css" />
+    <Content Include="dist\controls\mdb-controls.js" />
+    <Content Include="dist\controls\mdb-controls.min.css" />
+    <Content Include="dist\controls\mdb-controls.min.js" />
+    <Content Include="dist\css\mdb-bead-config.css" />
+    <Content Include="dist\css\mdb-bead-config.min.css" />
+    <Content Include="dist\js\mdb-bead-config-settings.js" />
+    <Content Include="dist\js\mdb-bead-config-settings.min.js">
+      <DependentUpon>mdb-bead-config-settings.js</DependentUpon>
+    </Content>
+    <Content Include="dist\js\mdb-bead-config.js" />
+    <Content Include="dist\js\mdb-bead-config.min.js">
+      <DependentUpon>mdb-bead-config.js</DependentUpon>
+    </Content>
+    <Content Include="dist\templates\mdbBead.html" />
+    <Content Include="dist\templates\mdbBeadConfig.html" />
+    <Content Include="dist\templates\mdbColorSelector.html" />
     <Content Include="Images\bead.jpg" />
     <Content Include="packages.config" />
     <Content Include="Content\angular-1.5.11\angular-1.5.11\angular-animate.min.js.map" />
@@ -373,12 +399,15 @@
     <Content Include="Content\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="SettingsController\BeadConfigSettingsController.js" />
+    <Content Include="SettingsController\BeadConfigSettingsService.js" />
     <Content Include="Style\mdb-bead-config.css">
       <DependentUpon>mdb-bead-config.less</DependentUpon>
     </Content>
     <Content Include="Style\mdb-bead-config.less" />
     <Content Include="App\Main\ColorSelector\mdbColorSelector.less" />
-    <Content Include="App\Services\beads.json" />
+    <Content Include="data\beads.json" />
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

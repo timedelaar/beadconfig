@@ -5,7 +5,7 @@
 		var directive = {
 			restrict: 'E',
 			controller: function() {}, // Empty controller to allow for require
-			templateUrl: '/Templates/mdbBead.html',
+			templateUrl: baseUrl + '/Templates/mdbBead.html',
 			compile: compileFunc
 		};
 
@@ -39,6 +39,7 @@
 			element.on('click', select);
 
 			function select(e) {
+				e.stopPropagation();
 				bead.selected = !bead.selected;
 				if (bead.selected) {
 					element.addClass('selected');

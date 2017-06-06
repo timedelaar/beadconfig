@@ -1,12 +1,15 @@
 ﻿@import "../Content/mdb-controls/mdb-controls.less";
+@import "../App/Main/ColorSelector/mdbColorSelector.less";
 
-@primary: orange;
+@primary: #ff9900;
 @selected-color: @primary;
 @text-color: lighten(black, 20%);
 @border-color: darken(@primary, 10%);
 @background-color: white;
+@background-image: url('/wp-content/uploads/mdb-bead-config/achtergrond.jpg');
 
-@menu-background-color: white;
+@menu-background-color: @primary;
+@menu-text-color: white;
 
 @color-selector-border-color: darken(@primary, 10%);
 @color-selector-background: darken(white, 20%);
@@ -17,118 +20,150 @@ body {
 	color: @text-color;
 }
 
-.form-control {
-	border-radius: 0;
-
-	&:focus {
-		border-color: @primary;
-		box-shadow: none;
-	}
-}
-
 html, body, body > .container-fluid, .container-fluid > .col-sm-12, mdb-bead-config {
 	height: 100%;
 }
 
-mdb-bead-config {
-	display: block;
-}
+@media screen and (min-width: 768px){
+	.site-content .col-full {
+		max-width: 100%;
 
-.main, .menu {
-	border: 2px solid @border-color;
-	height: 100%;
-}
-
-.main {
-	border-right-width: 1px;
-	display: block;
-	overflow: scroll;
-	.necklace {
-		position: relative;
-		display: block;
-		text-align: center;
-		vertical-align: middle;
-		margin-left: -15px;
-		margin-right: -15px;
-		height: 100%;
-		padding: 20px;
+		nav {
+			max-width: 65.141em;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
-}
-
-.bead {
-	box-sizing: content-box;
-	position: absolute;
-	display: block;
-	width: 10%;
-	min-width: 40px;
-	max-width: 150px;
-	max-height: 150px;
-	border-radius: 50%;
-	overflow: hidden;
-	opacity: 0;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	cursor: pointer;
-
-	img {
-		border-radius: 50%;
-		height: 100%;
+	.right-sidebar .content-area {
 		width: 100%;
+		padding: 0px 20px;
 	}
+} 
 
-	+.bead {
-		border-left: none;
-	}
+mdb-bead-config {
+	height: 80vh;
+	display: block;
+	font-size: 12px;
 
-	&.selected {
-		margin-left: -1px;
-		border: 2px solid @selected-color;
-		z-index: 2;
-	}
-}
+	input.form-control, select.form-control {
+		border: 1px solid #CCCCCC;
+		border-radius: 0;
+		background-color: white;
+		box-shadow: none;
 
-.menu {
-	border-left-width: 1px;
-	padding-top: 10px;
-
-	.bead {
-
-	}
-
-	.prices {
-		border: 1px solid @primary;
-		padding: 0px 5px;
-
-		.form-group {
-			margin-bottom: 5px;
-			margin-left: 0;
-			margin-right: 0;
-
-
-			&.line {
-				border-top: 1px solid @primary;
-				margin: 0px 10px;
-				height: 1px;
-			}
-
-			+.total {
-				margin-top: 5px;
-			}
+		&:focus {
+			background-color: white;
+			border-color: @border-color;
+			box-shadow: none;
 		}
 	}
 
-	.price, .control-label {
-		padding: 3px 5px 0 5px;
+	select.form-control { 
+		padding-left: 5px;
+		padding-right: 5px;
 	}
 
-	.control-label {
-		text-align: left;
-	}
-
-	.price {
+	.main, .menu {
+		border: 2px solid @border-color;
 		height: 100%;
-		text-align: right;
+	}
+
+	.main {
+		border-right-width: 1px;
+		display: block;
+		overflow: auto;
+		background-image: @background-image;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: @background-color;
+		.necklace {
+			position: relative;
+			display: block;
+			text-align: center;
+			vertical-align: middle;
+			margin-left: -15px;
+			margin-right: -15px;
+			height: 100%;
+			padding: 20px;
+		}
+	}
+
+	.bead {
+		box-sizing: content-box;
+		position: absolute;
+		display: block;
+		width: 10%;
+		min-width: 40px;
+		max-width: 150px;
+		max-height: 150px;
+		border-radius: 50%;
+		overflow: hidden;
+		opacity: 0;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+		cursor: pointer;
+
+		img {
+			border-radius: 50%;
+			height: 100%;
+			width: 100%;
+		}
+
+		+.bead {
+			border-left: none;
+		}
+
+		&.selected {
+			margin-left: -1px;
+			border: 2px solid @selected-color;
+			z-index: 2;
+		}
+	}
+
+	.menu {
+		border-left-width: 1px;
+		padding: 10px 5px 0 5px;
+		background-color: @menu-background-color;
+		color: @menu-text-color;
+		.bead {
+
+		}
+
+		.prices {
+			border: 1px solid @primary;
+			padding: 0px 0px;
+
+			.form-group {
+				margin-bottom: 5px;
+				margin-left: -5px;
+				margin-right: -5px;
+
+
+				&.line {
+					border-top: 1px solid white;
+					margin: 0px 5px;
+					height: 1px;
+				}
+
+				+.total {
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.price, .control-label {
+			padding: 3px 5px 0 5px;
+		}
+
+		.control-label {
+			text-align: left;
+		}
+
+		.price {
+			height: 100%;
+			text-align: right;
+		}
 	}
 }
 
@@ -177,19 +212,23 @@ mdb-color-selector-window {
 	max-height: 60px;
 }
 
-.btn-primary {
+mdb-bead-config .btn-primary {
 	background-color: @primary;
 	border-color: darken(@primary, 15%);
 	color: white;
 	outline: none;
 	font-size: 15px;
 	border-radius: 0;
+	box-shadow: none;
+	padding-left: 10px;
+	padding-right: 10px;
 
 	&:hover, &:focus, &[disabled]:hover, &[disabled]:focus {
 		background-color: darken(@primary, 5%);
 		border-color: darken(@primary, 15%);
 		color: white;
 		outline: none;
+		box-shadow: none;
 	}
 
 	&:active, &:active:hover {
@@ -197,12 +236,42 @@ mdb-color-selector-window {
 		border-color: darken(@primary, 15%);
 		color: white;
 		outline: none;
+		box-shadow: none;
 	}
 }
 
 input[mdb-checkbox], input[mdb-radio] {
-	border-color: @primary;
+	border-color: white;
 	+ .mdb-control-label {
-		background-color: @primary;
+		background-color: white;
 	}
+}
+
+.loader-background {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	z-index: 2;
+	background-color: #ffffff;
+	background-color: rgba(0, 0, 0, 0.6);
+	top: 0;
+	left: 0;
+}
+
+.loader {
+	width: 25px;
+	height: 25px;
+	border: 5px solid gray;
+	border-top-color: black;
+	border-radius: 50%;
+	position: fixed;
+	z-index: 3;
+	animation: spin 1s linear infinite;
+	left: ~'calc(50vw - 13px)';
+	top: ~'calc(50vh - 13px)';
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }

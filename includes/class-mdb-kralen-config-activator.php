@@ -30,7 +30,12 @@ class Mdb_Kralen_Config_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-	    $post_content = '<div ng-app="BeadConfig"><bead-config></bead-config></div>';
+	    self::create_page();
+	    self::create_table();
+	}
+	
+	private static function create_page() {
+	    $post_content = '<base href="/" /><div ng-app="MdbBeadConfig"><mdb-bead-config></mdb-bead-config></div>';
 	    //post status and options
 	    $post = array(
 		'comment_status' => 'closed',
@@ -44,6 +49,23 @@ class Mdb_Kralen_Config_Activator {
 	    //insert page and save the id
 	    $newvalue = wp_insert_post( $post, false );
 	    //save the id in the database
-	    update_option( 'bead_config', $newvalue );
+	    update_option( 'mdb_bead_config_page_id', $newvalue );
+	}
+	
+	private static function create_table() {
+	    global $wpdb;
+	    $charset_collate = $wpdb->get_charset_collate();
+	    $table_name = $wpdb->prefix . "mdb_bead_images";
+	    $sql = "CREATE TABLE $table_name (
+		    color varchar(100) NOT NULL,
+		    letter varchar(20) NOT NULL,
+		    image_location varchar(1000) NOT NULL,
+		    PRIMARY KEY  (color, letter)
+		    ) $charset_collate;";
+	    
+	    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	    dbDelta($sql);
+	    
+	    add_option("mdb_bead_config_db_version", "1.0");
 	}
 }

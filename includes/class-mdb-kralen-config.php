@@ -75,7 +75,7 @@ class Mdb_Kralen_Config {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
+		$this->register_routes();
 	}
 
 	/**
@@ -119,6 +119,11 @@ class Mdb_Kralen_Config {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-mdb-kralen-config-public.php';
 
+		/**
+		 * The class responsible for defining all rest endpoints and actions.
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/mdb-bead-config-controller.php';
+		
 		$this->loader = new Mdb_Kralen_Config_Loader();
 
 	}
@@ -173,6 +178,14 @@ class Mdb_Kralen_Config {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+	}
+	
+	/**
+	 * Register all rest endpoints.
+	 */
+	private function register_routes() {
+	    $plugin_controller = new mdb_bead_config_controller();
+	    $this->loader->add_action('rest_api_init', $plugin_controller, 'register_routes');
 	}
 
 	/**
