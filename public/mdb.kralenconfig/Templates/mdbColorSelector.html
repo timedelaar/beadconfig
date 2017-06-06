@@ -1,22 +1,58 @@
 ﻿<div>
 	<div class="color-selector-title">
 		Selecteer een kleur
-		<span class="glyphicon glyphicon-remove pull-right"></span>
+		<span class="glyphicon glyphicon-remove pull-right" ng-click="close()"></span>
 	</div>
 	<div class="color-selector-content">
-		<div class="size-select" ng-if="::selectedBead.type === 'spacer'">
+		<div class="size-select" ng-if="ctrl.selectedBead.type === 'spacer'">
 			<div class="checkbox">
-				<label><input type="checkbox" mdb-checkbox ng-model="selectedBead.size" ng-true-value="'big'" ng-false-value="'small'" ng-change="ctrl.updatePrices(ctrl.necklace)" />Groot</label>
+				<label><input type="checkbox" mdb-checkbox ng-model="ctrl.selectedBead.size" ng-true-value="'big'" ng-false-value="'small'" ng-change="ctrl.updatePrices(ctrl.necklace)" />Groot</label>
 			</div>
 		</div>
-		<div class="bead-thumbnail-wrapper"
-			 ng-class="{ 'current': selectedBead.color === bead.color}"
-			 ng-repeat="bead in beads track by bead.color">
-			<img class="bead-thumbnail"
-				 ng-src="/{{::bead.image_location}}"
-				 title="{{::bead.color}}"
-				 alt="{{::bead.color}}_{{::bead.letter}}"
-				 ng-click="setColor(bead.color)" />
+		<div ng-repeat="bead in beads" ng-if="$index % 4 == 0" class="row">
+			<div class="col-xs-3">
+				<div class="bead-thumbnail-wrapper"
+					 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index].color}">
+					<img class="bead-thumbnail"
+						 ng-src="/{{beads[$index].image_location}}"
+						 title="{{beads[$index].color}}"
+						 alt="{{beads[$index].color}}_{{beads[$index].letter}}"
+						 ng-click="ctrl.selectedBead.setColor(beads[$index].color)" />
+				</div>
+			</div>
+			<div class="col-xs-3"
+				 ng-if="beads.length > ($index + 1)">
+				<div class="bead-thumbnail-wrapper"
+					 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 1].color}">
+					<img class="bead-thumbnail"
+						 ng-src="/{{beads[$index + 1].image_location}}"
+						 title="{{beads[$index + 1].color}}"
+						 alt="{{beads[$index + 1].color}}_{{beads[$index + 1].letter}}"
+						 ng-click="ctrl.selectedBead.setColor(beads[$index + 1].color)" />
+				</div>
+			</div>
+			<div class="col-xs-3"
+				 ng-if="beads.length > ($index + 2)">
+				<div class="bead-thumbnail-wrapper"
+					 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 2].color}">
+					<img class="bead-thumbnail"
+						 ng-src="/{{beads[$index + 2].image_location}}"
+						 title="{{beads[$index + 2].color}}"
+						 alt="{{beads[$index + 2].color}}_{{beads[$index + 2].letter}}"
+						 ng-click="ctrl.selectedBead.setColor(beads[$index + 2].color)" />
+				</div>
+			</div>
+			<div class="col-xs-3"
+				 ng-if="beads.length > ($index + 3)">
+				<div class="bead-thumbnail-wrapper"
+					 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 3].color}">
+					<img class="bead-thumbnail"
+						 ng-src="/{{beads[$index + 3].image_location}}"
+						 title="{{beads[$index + 3].color}}"
+						 alt="{{beads[$index + 3].color}}_{{beads[$index + 3].letter}}"
+						 ng-click="ctrl.selectedBead.setColor(beads[$index + 3].color)" />
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

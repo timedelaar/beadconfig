@@ -13,6 +13,8 @@ if (debug) {
 	function Controller($scope, Bead, beadService, $window) {
 		var ctrl = this;
 
+		ctrl.selectedBead = null;
+
 		ctrl.defaultColor = 'army_green';
 		ctrl.laceType = 'round';
 		ctrl.necklaceText = '';
@@ -198,11 +200,14 @@ if (debug) {
 				element.append('<mdb-bead bead="fakeBead" class="bead"></mdb-bead>');
 			});
 
+			angular.element('body').on('click', function () {
+				$rootScope.$emit('beadSelected');
+			});
+
 			scope.$watch('ctrl.necklaceText', convertToBeads);
 
 			scope.$watchCollection('ctrl.necklace', positionBeads);
 			angular.element($window).on('resize', function () {
-				$rootScope.$broadcast('mdbColorSelectorClose');
 				$timeout(function () {
 					updateCenter();
 					positionBeads(ctrl.necklace);
@@ -359,12 +364,12 @@ if (debug) {
 	}
 })();
 (function () {
-	angular.module('MdbBeadConfig').directive('mdbBead', ['$rootScope', '$parse', mdbBead]);
+	angular.module('MdbBeadConfig').directive('mdbBead', ['$rootScope', '$parse', '$timeout', mdbBead]);
 
-	function mdbBead($rootScope, $parse) {
+	function mdbBead($rootScope, $parse, $timeout) {
 		var directive = {
 			restrict: 'E',
-			controller: function() {}, // Empty controller to allow for require
+			require: '^mdbBeadConfig',
 			templateUrl: baseUrl + '/Templates/mdbBead.html',
 			compile: compileFunc
 		};
@@ -404,20 +409,27 @@ if (debug) {
 				if (bead.selected) {
 					element.addClass('selected');
 					$rootScope.$emit('beadSelected', bead);
+					ctrl.selectedBead = bead;
 				}
 				else {
 					element.removeClass('selected');
+					ctrl.selectedBead = null;
 				}
+				$timeout();
 			}
 
 			scope.deselect = function () {
 				bead.selected = false;
 				element.removeClass('selected');
+				if (ctrl.selectedBead === bead) {
+					ctrl.selectedBead = null;
+				}
+				$timeout();
 			};
 
 			var closeSelectListener = $rootScope.$on('beadSelected', closeSelector);
 
-			function closeSelector (evt, data) {
+			function closeSelector(evt, data) {
 				if (bead.selected && data !== bead) {
 					scope.deselect();
 					scope.$emit('mdbColorSelectorClose');
@@ -460,105 +472,39 @@ if (debug) {
 	}
 })();
 (function () {
-	angular.module('MdbBeadConfig').directive('mdbColorSelector', ['$compile', '$parse', 'BeadService', mdbColorSelector]);
-	angular.module('MdbBeadConfig').directive('mdbColorSelectorWindow', [mdbColorSelectorWindow]);
+	angular.module('MdbBeadConfig').directive('mdbColorSelector', ['BeadService', '$rootScope', mdbColorSelector]);
 
-	function mdbColorSelector($compile, $parse, beadService) {
-		var directive = {
-			restrict: 'A',
-			priority: 10,
-			require: '^mdbBeadConfigController',
-			templateUrl: function (element, attrs) {
-				if (!attrs.mdbColorSelector)
-					throw new Error('No template url provided!');
-
-				return attrs.mdbColorSelector;
-			},
-			link: linkFunc
-		};
-
-		return directive;
-
-		function linkFunc(scope, element, attrs) {
-			scope.selectedBead = scope.bead;
-			scope.beads = beadService.getBeadsByLetter(scope.selectedBead.letter);
-			//var windowTemplateUrl = baseUrl + attrs.mdbColorSelector;
-			//var windowOpen = false;
-
-			//var onCloseCallback = attrs.mdbColorSelectorClose;
-
-			var offsetX = attrs.mdbColorSelectorOffsetX;
-			offsetX = offsetX ? parseInt(offsetX) : 0;
-			var offsetY = attrs.mdbColorSelectorOffsetY;
-			offsetY = offsetY ? parseInt(offsetY) : 0;
-
-			//scope.$on('mdbColorSelectorClose', closeWindow);
-			//scope.$on('mdbColorSelectorOpen', openWindow);
-			//scope.$on('mdbColorSelectorToggle', toggleWindow);
-
-			//if (!windowTemplateUrl) {
-			//	throw new Error('No window template url provided!');
-			//}
-
-			//var colorSelectorWindow = angular.element('<mdb-color-selector-window mdb-template-url="' + windowTemplateUrl + '"></mdb-color-selector-window>');
-
-			//element.on('click', toggleWindow);
-
-			//function toggleWindow() {
-			//	if (windowOpen)
-			//		closeWindow();
-			//	else
-			//		openWindow();
-			//}
-
-			//function openWindow() {
-			//	angular.element('body').on('click.selector', closeWindow);
-			//	windowOpen = true;
-			//	var position = element.position();
-			//	colorSelectorWindow.css({ 'left': Math.round(position.left + offsetX) + 'px', 'z-index': 10, 'opacity': 0 });
-			//	colorSelectorWindow.insertAfter(element);
-			//	position.top -= colorSelectorWindow.height();
-			//	position.top = Math.max(position.top, 0);
-			//	colorSelectorWindow.css({ 'top': Math.round(position.top + offsetY), 'opacity': 1 });
-			//	$compile(colorSelectorWindow)(scope);
-			//}
-
-			//function closeWindow() {
-			//	angular.element('body').off('click.selector');
-			//	windowOpen = false;
-			//	colorSelectorWindow.css({ 'opacity': 0 });
-			//	angular.element('body').on("webkitTransitionEnd.selectorAnimation otransitionend.selectorAnimation oTransitionEnd.selectorAnimation msTransitionEnd.selectorAnimation transitionend.selectorAnimation", function (event) {
-			//		angular.element('body').off('.selectorAnimation');
-			//		colorSelectorWindow.remove();
-			//	});
-			//	if (onCloseCallback) {
-			//		scope.$eval(onCloseCallback);
-			//	}
-			//}
-		}
-	}
-
-	function mdbColorSelectorWindow() {
+	function mdbColorSelector(beadService, $rootScope) {
 		var directive = {
 			restrict: 'E',
+			priority: 10,
+			scope: true,
+			require: '^mdbBeadConfig',
 			templateUrl: function (element, attrs) {
-				if (!attrs.mdbTemplateUrl)
+				if (!attrs.templateUrl)
 					throw new Error('No template url provided!');
 
-				return attrs.mdbTemplateUrl;
+				return attrs.templateUrl;
 			},
 			link: linkFunc
 		};
 
 		return directive;
 
-		function linkFunc(scope, element, attrs) {
+		function linkFunc(scope, element, attrs, ctrl) {
+			scope.beads = [];
+			scope.$watch('ctrl.selectedBead', function (selectedBead) {
+				if (selectedBead)
+					scope.beads = beadService.getBeadsByLetter(selectedBead.letter);
+			});
+
 			element.on('click', function (evt) {
 				evt.stopPropagation();
 			});
-			element.find('.fa-close, .glyphicon-remove').on('click', function () {
-				scope.$emit('mdbColorSelectorClose');
-			});
+
+			scope.close = function () {
+				$rootScope.$emit('beadSelected');
+			};
 		}
 	}
 })();

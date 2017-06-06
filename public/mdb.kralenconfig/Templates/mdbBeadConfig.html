@@ -47,9 +47,10 @@
 		</button>
 	</div>
 </div>
-<div class="col-md-10 col-md-pull-2 main"
-	 mdb-color-selector="/Templates/mdbColorSelector.html"
-	 mdb-color-selector-bead="ctrl.selectedBead">
+<div class="col-md-10 col-md-pull-2 main">
+	<mdb-color-selector template-url="/Templates/mdbColorSelector.html"
+						ng-show="ctrl.selectedBead">
+	</mdb-color-selector>
 	<div class="necklace">
 		<mdb-bead bead="bead"
 				  ng-repeat="bead in ctrl.necklace">

@@ -1,10 +1,10 @@
 ﻿(function () {
-	angular.module('MdbBeadConfig').directive('mdbBead', ['$rootScope', '$parse', mdbBead]);
+	angular.module('MdbBeadConfig').directive('mdbBead', ['$rootScope', '$parse', '$timeout', mdbBead]);
 
-	function mdbBead($rootScope, $parse) {
+	function mdbBead($rootScope, $parse, $timeout) {
 		var directive = {
 			restrict: 'E',
-			controller: function() {}, // Empty controller to allow for require
+			require: '^mdbBeadConfig',
 			templateUrl: baseUrl + '/Templates/mdbBead.html',
 			compile: compileFunc
 		};
@@ -44,20 +44,27 @@
 				if (bead.selected) {
 					element.addClass('selected');
 					$rootScope.$emit('beadSelected', bead);
+					ctrl.selectedBead = bead;
 				}
 				else {
 					element.removeClass('selected');
+					ctrl.selectedBead = null;
 				}
+				$timeout();
 			}
 
 			scope.deselect = function () {
 				bead.selected = false;
 				element.removeClass('selected');
+				if (ctrl.selectedBead === bead) {
+					ctrl.selectedBead = null;
+				}
+				$timeout();
 			};
 
 			var closeSelectListener = $rootScope.$on('beadSelected', closeSelector);
 
-			function closeSelector (evt, data) {
+			function closeSelector(evt, data) {
 				if (bead.selected && data !== bead) {
 					scope.deselect();
 					scope.$emit('mdbColorSelectorClose');

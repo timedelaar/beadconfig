@@ -24,11 +24,14 @@
 				element.append('<mdb-bead bead="fakeBead" class="bead"></mdb-bead>');
 			});
 
+			angular.element('body').on('click', function () {
+				$rootScope.$emit('beadSelected');
+			});
+
 			scope.$watch('ctrl.necklaceText', convertToBeads);
 
 			scope.$watchCollection('ctrl.necklace', positionBeads);
 			angular.element($window).on('resize', function () {
-				$rootScope.$broadcast('mdbColorSelectorClose');
 				$timeout(function () {
 					updateCenter();
 					positionBeads(ctrl.necklace);

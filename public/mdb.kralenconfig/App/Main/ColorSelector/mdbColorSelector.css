@@ -1,10 +1,11 @@
-﻿mdb-color-selector-window {
+﻿mdb-color-selector {
   display: block;
   position: absolute;
   border: 1px solid black;
   background-color: white;
   min-height: 20px;
   min-width: 20px;
+  z-index: 1000;
 }
 .color-selector-title {
   border-bottom: 1px solid black;

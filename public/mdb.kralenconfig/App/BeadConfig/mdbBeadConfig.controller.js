@@ -4,6 +4,8 @@
 	function Controller($scope, Bead, beadService, $window) {
 		var ctrl = this;
 
+		ctrl.selectedBead = null;
+
 		ctrl.defaultColor = 'army_green';
 		ctrl.laceType = 'round';
 		ctrl.necklaceText = '';
