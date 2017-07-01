@@ -7,10 +7,12 @@
 		var service = this;
 
 		var beads;
+		var laces = [];
 
 		service.loading;
 
 		service.loadBeads = loadBeads;
+		service.getLaces = getLaces;
 		service.getBeads = getBeads;
 		service.getColors = getColors;
 		service.getBeadsByLetter = getBeadsByLetter;
@@ -24,7 +26,7 @@
 
 		function loadBeads() {
 			startSpinner();
-			var source = '/wp-json/bead-config/v1/plugin-settings/';
+			var source = '/wp-json/bead-config/v1/configurator-data/';
 			if (debug) {
 				source = 'data/beads.json';
 			}
@@ -32,11 +34,20 @@
 				method: 'GET',
 				url: source
 			}).then(function success(response) {
-				beads = response.data.settings.beads;
+				beads = response.data.beads;
+				for (var index = 0, length = response.data.laces.length; index < length; index++) {
+					var lace = response.data.laces[index];
+					var image = lace.image ? lace.image.thumb_src : lace.image_src;
+					laces.push({ 'type': lace.attributes.attribute_pa_veter_type, 'variationId': lace.variation_id, 'image_src': image });
+				}
 			}, function error(response) {
 				console.log('Error loading beads', response);
 			});
 			return service.loading;
+		}
+
+		function getLaces() {
+			return laces;
 		}
 
 		function getBeads() {

@@ -2997,9 +2997,9 @@
     <Content Include="Style\mdb-bead-config.min.css">
       <DependentUpon>mdb-bead-config.css</DependentUpon>
     </Content>
-    <Content Include="Templates\mdbBead.html" />
-    <Content Include="Templates\mdbBeadConfig.html" />
-    <Content Include="Templates\mdbColorSelector.html" />
+    <Content Include="templates\mdbBead.html" />
+    <Content Include="templates\mdbBeadConfig.html" />
+    <Content Include="templates\mdbColorSelector.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

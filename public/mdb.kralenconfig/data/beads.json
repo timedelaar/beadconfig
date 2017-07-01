@@ -1,529 +1,547 @@
 ﻿{
-	"settings": {
-		"beads": {
-			"concrete_grey": {
-				"_": {
-					"color": "concrete_grey",
-					"letter": "_",
-					"image_location": "Images/ConcreteGrey/_.jpg",
-					"price": 2.00,
-					"type": "spacer_bead",
-					"size": "small"
-				},
-				"0": {
-					"color": "concrete_grey",
-					"letter": "0",
-					"image_location": "Images/ConcreteGrey/0.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"1": {
-					"color": "concrete_grey",
-					"letter": "1",
-					"image_location": "Images/ConcreteGrey/1.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"2": {
-					"color": "concrete_grey",
-					"letter": "2",
-					"image_location": "Images/ConcreteGrey/2.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"3": {
-					"color": "concrete_grey",
-					"letter": "3",
-					"image_location": "Images/ConcreteGrey/3.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"4": {
-					"color": "concrete_grey",
-					"letter": "4",
-					"image_location": "Images/ConcreteGrey/4.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"5": {
-					"color": "concrete_grey",
-					"letter": "5",
-					"image_location": "Images/ConcreteGrey/5.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"6": {
-					"color": "concrete_grey",
-					"letter": "6",
-					"image_location": "Images/ConcreteGrey/6.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"7": {
-					"color": "concrete_grey",
-					"letter": "7",
-					"image_location": "Images/ConcreteGrey/7.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"8": {
-					"color": "concrete_grey",
-					"letter": "8",
-					"image_location": "Images/ConcreteGrey/8.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"9": {
-					"color": "concrete_grey",
-					"letter": "9",
-					"image_location": "Images/ConcreteGrey/9.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"a": {
-					"color": "concrete_grey",
-					"letter": "a",
-					"image_location": "Images/ConcreteGrey/a.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"b": {
-					"color": "concrete_grey",
-					"letter": "b",
-					"image_location": "Images/ConcreteGrey/b.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"c": {
-					"color": "concrete_grey",
-					"letter": "c",
-					"image_location": "Images/ConcreteGrey/c.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"d": {
-					"color": "concrete_grey",
-					"letter": "d",
-					"image_location": "Images/ConcreteGrey/d.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"e": {
-					"color": "concrete_grey",
-					"letter": "e",
-					"image_location": "Images/ConcreteGrey/e.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"f": {
-					"color": "concrete_grey",
-					"letter": "f",
-					"image_location": "Images/ConcreteGrey/f.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"g": {
-					"color": "concrete_grey",
-					"letter": "g",
-					"image_location": "Images/ConcreteGrey/g.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"h": {
-					"color": "concrete_grey",
-					"letter": "h",
-					"image_location": "Images/ConcreteGrey/h.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"i": {
-					"color": "concrete_grey",
-					"letter": "i",
-					"image_location": "Images/ConcreteGrey/i.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"j": {
-					"color": "concrete_grey",
-					"letter": "j",
-					"image_location": "Images/ConcreteGrey/j.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"k": {
-					"color": "concrete_grey",
-					"letter": "k",
-					"image_location": "Images/ConcreteGrey/k.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"l": {
-					"color": "concrete_grey",
-					"letter": "l",
-					"image_location": "Images/ConcreteGrey/l.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"m": {
-					"color": "concrete_grey",
-					"letter": "m",
-					"image_location": "Images/ConcreteGrey/m.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"n": {
-					"color": "concrete_grey",
-					"letter": "n",
-					"image_location": "Images/ConcreteGrey/n.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"o": {
-					"color": "concrete_grey",
-					"letter": "o",
-					"image_location": "Images/ConcreteGrey/o.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"p": {
-					"color": "concrete_grey",
-					"letter": "p",
-					"image_location": "Images/ConcreteGrey/p.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"q": {
-					"color": "concrete_grey",
-					"letter": "q",
-					"image_location": "Images/ConcreteGrey/q.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"r": {
-					"color": "concrete_grey",
-					"letter": "r",
-					"image_location": "Images/ConcreteGrey/r.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"s": {
-					"color": "concrete_grey",
-					"letter": "s",
-					"image_location": "Images/ConcreteGrey/s.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"t": {
-					"color": "concrete_grey",
-					"letter": "t",
-					"image_location": "Images/ConcreteGrey/t.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"u": {
-					"color": "concrete_grey",
-					"letter": "u",
-					"image_location": "Images/ConcreteGrey/u.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"v": {
-					"color": "concrete_grey",
-					"letter": "v",
-					"image_location": "Images/ConcreteGrey/v.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"w": {
-					"color": "concrete_grey",
-					"letter": "w",
-					"image_location": "Images/ConcreteGrey/w.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"x": {
-					"color": "concrete_grey",
-					"letter": "x",
-					"image_location": "Images/ConcreteGrey/x.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"y": {
-					"color": "concrete_grey",
-					"letter": "y",
-					"image_location": "Images/ConcreteGrey/y.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"z": {
-					"color": "concrete_grey",
-					"letter": "z",
-					"image_location": "Images/ConcreteGrey/z.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				}
+	"laces": [
+		{
+			"variation_id": 1,
+			"attributes": {
+				"attribute_pa_veter_type": "rond"
 			},
-			"petrol_blue": {
-				"_": {
-					"color": "petrol_blue",
-					"letter": "_",
-					"image_location": "Images/PetrolBlue/_.jpg",
-					"price": 2.00,
-					"type": "spacer_bead",
-					"size": "small"
-				},
-				"0": {
-					"color": "petrol_blue",
-					"letter": "0",
-					"image_location": "Images/PetrolBlue/0.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"1": {
-					"color": "petrol_blue",
-					"letter": "1",
-					"image_location": "Images/PetrolBlue/1.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"2": {
-					"color": "petrol_blue",
-					"letter": "2",
-					"image_location": "Images/PetrolBlue/2.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"3": {
-					"color": "petrol_blue",
-					"letter": "3",
-					"image_location": "Images/PetrolBlue/3.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"4": {
-					"color": "petrol_blue",
-					"letter": "4",
-					"image_location": "Images/PetrolBlue/4.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"5": {
-					"color": "petrol_blue",
-					"letter": "5",
-					"image_location": "Images/PetrolBlue/5.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"6": {
-					"color": "petrol_blue",
-					"letter": "6",
-					"image_location": "Images/PetrolBlue/6.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"7": {
-					"color": "petrol_blue",
-					"letter": "7",
-					"image_location": "Images/PetrolBlue/7.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"8": {
-					"color": "petrol_blue",
-					"letter": "8",
-					"image_location": "Images/PetrolBlue/8.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"9": {
-					"color": "petrol_blue",
-					"letter": "9",
-					"image_location": "Images/PetrolBlue/9.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"a": {
-					"color": "petrol_blue",
-					"letter": "a",
-					"image_location": "Images/PetrolBlue/a.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"b": {
-					"color": "petrol_blue",
-					"letter": "b",
-					"image_location": "Images/PetrolBlue/b.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"c": {
-					"color": "petrol_blue",
-					"letter": "c",
-					"image_location": "Images/PetrolBlue/c.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"d": {
-					"color": "petrol_blue",
-					"letter": "d",
-					"image_location": "Images/PetrolBlue/d.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"e": {
-					"color": "petrol_blue",
-					"letter": "e",
-					"image_location": "Images/PetrolBlue/e.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"f": {
-					"color": "petrol_blue",
-					"letter": "f",
-					"image_location": "Images/PetrolBlue/f.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"g": {
-					"color": "petrol_blue",
-					"letter": "g",
-					"image_location": "Images/PetrolBlue/g.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"h": {
-					"color": "petrol_blue",
-					"letter": "h",
-					"image_location": "Images/PetrolBlue/h.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"i": {
-					"color": "petrol_blue",
-					"letter": "i",
-					"image_location": "Images/PetrolBlue/i.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"j": {
-					"color": "petrol_blue",
-					"letter": "j",
-					"image_location": "Images/PetrolBlue/j.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"k": {
-					"color": "petrol_blue",
-					"letter": "k",
-					"image_location": "Images/PetrolBlue/k.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"l": {
-					"color": "petrol_blue",
-					"letter": "l",
-					"image_location": "Images/PetrolBlue/l.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"m": {
-					"color": "petrol_blue",
-					"letter": "m",
-					"image_location": "Images/PetrolBlue/m.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"n": {
-					"color": "petrol_blue",
-					"letter": "n",
-					"image_location": "Images/PetrolBlue/n.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"o": {
-					"color": "petrol_blue",
-					"letter": "o",
-					"image_location": "Images/PetrolBlue/o.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"p": {
-					"color": "petrol_blue",
-					"letter": "p",
-					"image_location": "Images/PetrolBlue/p.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"q": {
-					"color": "petrol_blue",
-					"letter": "q",
-					"image_location": "Images/PetrolBlue/q.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"r": {
-					"color": "petrol_blue",
-					"letter": "r",
-					"image_location": "Images/PetrolBlue/r.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"s": {
-					"color": "petrol_blue",
-					"letter": "s",
-					"image_location": "Images/PetrolBlue/s.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"t": {
-					"color": "petrol_blue",
-					"letter": "t",
-					"image_location": "Images/PetrolBlue/t.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"u": {
-					"color": "petrol_blue",
-					"letter": "u",
-					"image_location": "Images/PetrolBlue/u.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"v": {
-					"color": "petrol_blue",
-					"letter": "v",
-					"image_location": "Images/PetrolBlue/v.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"w": {
-					"color": "petrol_blue",
-					"letter": "w",
-					"image_location": "Images/PetrolBlue/w.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"x": {
-					"color": "petrol_blue",
-					"letter": "x",
-					"image_location": "Images/PetrolBlue/x.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"y": {
-					"color": "petrol_blue",
-					"letter": "y",
-					"image_location": "Images/PetrolBlue/y.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				},
-				"z": {
-					"color": "petrol_blue",
-					"letter": "z",
-					"image_location": "Images/PetrolBlue/z.jpg",
-					"price": 4.00,
-					"type": "letter_bead"
-				}
+			"image": {
+				"thumb_src": "Images/laces/round.jpg"
+			}
+		},
+		{
+			"variation_id": 2,
+			"attributes": {
+				"attribute_pa_veter_type": "vierkant"
+			},
+			"image": {
+				"thumb_src": "Images/laces/square.jpg"
+			}
+		}
+	],
+	"beads": {
+		"army_green": {
+			"_": {
+				"color": "army_green",
+				"letter": "_",
+				"image_location": "Images/army_green/_.png",
+				"price": 2.00,
+				"type": "spacer_bead",
+				"size": "small"
+			},
+			"0": {
+				"color": "army_green",
+				"letter": "0",
+				"image_location": "Images/army_green/0.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"1": {
+				"color": "army_green",
+				"letter": "1",
+				"image_location": "Images/army_green/1.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"2": {
+				"color": "army_green",
+				"letter": "2",
+				"image_location": "Images/army_green/2.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"3": {
+				"color": "army_green",
+				"letter": "3",
+				"image_location": "Images/army_green/3.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"4": {
+				"color": "army_green",
+				"letter": "4",
+				"image_location": "Images/army_green/4.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"5": {
+				"color": "army_green",
+				"letter": "5",
+				"image_location": "Images/army_green/5.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"6": {
+				"color": "army_green",
+				"letter": "6",
+				"image_location": "Images/army_green/6.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"7": {
+				"color": "army_green",
+				"letter": "7",
+				"image_location": "Images/army_green/7.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"8": {
+				"color": "army_green",
+				"letter": "8",
+				"image_location": "Images/army_green/8.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"9": {
+				"color": "army_green",
+				"letter": "9",
+				"image_location": "Images/army_green/9.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"a": {
+				"color": "army_green",
+				"letter": "a",
+				"image_location": "Images/army_green/a.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"b": {
+				"color": "army_green",
+				"letter": "b",
+				"image_location": "Images/army_green/b.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"c": {
+				"color": "army_green",
+				"letter": "c",
+				"image_location": "Images/army_green/c.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"d": {
+				"color": "army_green",
+				"letter": "d",
+				"image_location": "Images/army_green/d.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"e": {
+				"color": "army_green",
+				"letter": "e",
+				"image_location": "Images/army_green/e.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"f": {
+				"color": "army_green",
+				"letter": "f",
+				"image_location": "Images/army_green/f.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"g": {
+				"color": "army_green",
+				"letter": "g",
+				"image_location": "Images/army_green/g.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"h": {
+				"color": "army_green",
+				"letter": "h",
+				"image_location": "Images/army_green/h.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"i": {
+				"color": "army_green",
+				"letter": "i",
+				"image_location": "Images/army_green/i.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"j": {
+				"color": "army_green",
+				"letter": "j",
+				"image_location": "Images/army_green/j.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"k": {
+				"color": "army_green",
+				"letter": "k",
+				"image_location": "Images/army_green/k.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"l": {
+				"color": "army_green",
+				"letter": "l",
+				"image_location": "Images/army_green/l.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"m": {
+				"color": "army_green",
+				"letter": "m",
+				"image_location": "Images/army_green/m.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"n": {
+				"color": "army_green",
+				"letter": "n",
+				"image_location": "Images/army_green/n.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"o": {
+				"color": "army_green",
+				"letter": "o",
+				"image_location": "Images/army_green/o.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"p": {
+				"color": "army_green",
+				"letter": "p",
+				"image_location": "Images/army_green/p.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"q": {
+				"color": "army_green",
+				"letter": "q",
+				"image_location": "Images/army_green/q.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"r": {
+				"color": "army_green",
+				"letter": "r",
+				"image_location": "Images/army_green/r.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"s": {
+				"color": "army_green",
+				"letter": "s",
+				"image_location": "Images/army_green/s.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"t": {
+				"color": "army_green",
+				"letter": "t",
+				"image_location": "Images/army_green/t.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"u": {
+				"color": "army_green",
+				"letter": "u",
+				"image_location": "Images/army_green/u.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"v": {
+				"color": "army_green",
+				"letter": "v",
+				"image_location": "Images/army_green/v.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"w": {
+				"color": "army_green",
+				"letter": "w",
+				"image_location": "Images/army_green/w.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"x": {
+				"color": "army_green",
+				"letter": "x",
+				"image_location": "Images/army_green/x.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"y": {
+				"color": "army_green",
+				"letter": "y",
+				"image_location": "Images/army_green/y.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"z": {
+				"color": "army_green",
+				"letter": "z",
+				"image_location": "Images/army_green/z.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			}
+		},
+		"petrol_blue": {
+			"_": {
+				"color": "petrol_blue",
+				"letter": "_",
+				"image_location": "Images/petrol_blue/_.png",
+				"price": 2.00,
+				"type": "spacer_bead",
+				"size": "small"
+			},
+			"0": {
+				"color": "petrol_blue",
+				"letter": "0",
+				"image_location": "Images/petrol_blue/0.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"1": {
+				"color": "petrol_blue",
+				"letter": "1",
+				"image_location": "Images/petrol_blue/1.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"2": {
+				"color": "petrol_blue",
+				"letter": "2",
+				"image_location": "Images/petrol_blue/2.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"3": {
+				"color": "petrol_blue",
+				"letter": "3",
+				"image_location": "Images/petrol_blue/3.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"4": {
+				"color": "petrol_blue",
+				"letter": "4",
+				"image_location": "Images/petrol_blue/4.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"5": {
+				"color": "petrol_blue",
+				"letter": "5",
+				"image_location": "Images/petrol_blue/5.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"6": {
+				"color": "petrol_blue",
+				"letter": "6",
+				"image_location": "Images/petrol_blue/6.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"7": {
+				"color": "petrol_blue",
+				"letter": "7",
+				"image_location": "Images/petrol_blue/7.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"8": {
+				"color": "petrol_blue",
+				"letter": "8",
+				"image_location": "Images/petrol_blue/8.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"9": {
+				"color": "petrol_blue",
+				"letter": "9",
+				"image_location": "Images/petrol_blue/9.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"a": {
+				"color": "petrol_blue",
+				"letter": "a",
+				"image_location": "Images/petrol_blue/a.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"b": {
+				"color": "petrol_blue",
+				"letter": "b",
+				"image_location": "Images/petrol_blue/b.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"c": {
+				"color": "petrol_blue",
+				"letter": "c",
+				"image_location": "Images/petrol_blue/c.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"d": {
+				"color": "petrol_blue",
+				"letter": "d",
+				"image_location": "Images/petrol_blue/d.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"e": {
+				"color": "petrol_blue",
+				"letter": "e",
+				"image_location": "Images/petrol_blue/e.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"f": {
+				"color": "petrol_blue",
+				"letter": "f",
+				"image_location": "Images/petrol_blue/f.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"g": {
+				"color": "petrol_blue",
+				"letter": "g",
+				"image_location": "Images/petrol_blue/g.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"h": {
+				"color": "petrol_blue",
+				"letter": "h",
+				"image_location": "Images/petrol_blue/h.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"i": {
+				"color": "petrol_blue",
+				"letter": "i",
+				"image_location": "Images/petrol_blue/i.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"j": {
+				"color": "petrol_blue",
+				"letter": "j",
+				"image_location": "Images/petrol_blue/j.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"k": {
+				"color": "petrol_blue",
+				"letter": "k",
+				"image_location": "Images/petrol_blue/k.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"l": {
+				"color": "petrol_blue",
+				"letter": "l",
+				"image_location": "Images/petrol_blue/l.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"m": {
+				"color": "petrol_blue",
+				"letter": "m",
+				"image_location": "Images/petrol_blue/m.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"n": {
+				"color": "petrol_blue",
+				"letter": "n",
+				"image_location": "Images/petrol_blue/n.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"o": {
+				"color": "petrol_blue",
+				"letter": "o",
+				"image_location": "Images/petrol_blue/o.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"p": {
+				"color": "petrol_blue",
+				"letter": "p",
+				"image_location": "Images/petrol_blue/p.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"q": {
+				"color": "petrol_blue",
+				"letter": "q",
+				"image_location": "Images/petrol_blue/q.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"r": {
+				"color": "petrol_blue",
+				"letter": "r",
+				"image_location": "Images/petrol_blue/r.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"s": {
+				"color": "petrol_blue",
+				"letter": "s",
+				"image_location": "Images/petrol_blue/s.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"t": {
+				"color": "petrol_blue",
+				"letter": "t",
+				"image_location": "Images/petrol_blue/t.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"u": {
+				"color": "petrol_blue",
+				"letter": "u",
+				"image_location": "Images/petrol_blue/u.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"v": {
+				"color": "petrol_blue",
+				"letter": "v",
+				"image_location": "Images/petrol_blue/v.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"w": {
+				"color": "petrol_blue",
+				"letter": "w",
+				"image_location": "Images/petrol_blue/w.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"x": {
+				"color": "petrol_blue",
+				"letter": "x",
+				"image_location": "Images/petrol_blue/x.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"y": {
+				"color": "petrol_blue",
+				"letter": "y",
+				"image_location": "Images/petrol_blue/y.png",
+				"price": 4.00,
+				"type": "letter_bead"
+			},
+			"z": {
+				"color": "petrol_blue",
+				"letter": "z",
+				"image_location": "Images/petrol_blue/z.png",
+				"price": 4.00,
+				"type": "letter_bead"
 			}
 		}
 	}

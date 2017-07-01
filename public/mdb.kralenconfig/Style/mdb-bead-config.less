@@ -36,7 +36,7 @@ html, body, body > .container-fluid, .container-fluid > .col-sm-12, mdb-bead-con
 	}
 	.right-sidebar .content-area {
 		width: 100%;
-		padding: 0px 20px;
+		padding: 0 20px;
 	}
 } 
 
@@ -68,19 +68,61 @@ mdb-bead-config {
 		height: 100%;
 	}
 
+	@media screen and (max-width: 992px) {
+		.main {
+			border-right-width: 2px;
+			border-top-width: 1px;
+		}
+		.menu {
+			height: auto;
+			border-left-width: 2px;
+			border-bottom-width: 1px;
+			.row {
+				margin: 0;
+			}
+
+			.col-xs-4, .col-xs-8 {
+				padding: 0;
+
+				+.col-xs-4, +.col-xs-8 {
+					padding-left: 5px;
+				}
+
+				+.spelling {
+					padding-left: 10px;
+				}
+			}
+
+			.total {
+				margin-top: 5px;
+			}
+
+			.spelling {
+				margin-top: -5px;
+			}
+
+			.control-label, .price {
+				padding: 0 !important;
+			}
+
+			.form-group {
+				margin-bottom: 5px;
+			}
+		}
+	}
+
 	.main {
 		border-right-width: 1px;
 		display: block;
-		overflow: auto;
 		background-image: @background-image;
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-color: @background-color;
 		.necklace {
+			overflow: auto;
 			position: relative;
 			display: block;
 			text-align: center;
-			vertical-align: middle;
 			margin-left: -15px;
 			margin-right: -15px;
 			height: 100%;
@@ -95,29 +137,23 @@ mdb-bead-config {
 		width: 10%;
 		min-width: 40px;
 		max-width: 150px;
-		max-height: 150px;
-		border-radius: 50%;
+		border-radius: 40%;
 		overflow: hidden;
 		opacity: 0;
 		-moz-user-select: none;
 		-webkit-user-select: none;
 		user-select: none;
 		cursor: pointer;
+		z-index: 2;
 
 		img {
-			border-radius: 50%;
 			height: 100%;
 			width: 100%;
 		}
 
-		+.bead {
-			border-left: none;
-		}
-
 		&.selected {
-			margin-left: -1px;
-			border: 2px solid @selected-color;
-			z-index: 2;
+			background-color: fade(@selected-color, 70%);
+			z-index: 3;
 		}
 	}
 
@@ -132,7 +168,7 @@ mdb-bead-config {
 
 		.prices {
 			border: 1px solid @primary;
-			padding: 0px 0px;
+			padding: 0;
 
 			.form-group {
 				margin-bottom: 5px;
@@ -142,12 +178,16 @@ mdb-bead-config {
 
 				&.line {
 					border-top: 1px solid white;
-					margin: 0px 5px;
+					margin: 0 5px;
 					height: 1px;
 				}
 
 				+.total {
 					margin-top: 5px;
+				}
+
+				.total.hidden-md {
+					height: 100%;
 				}
 			}
 		}
@@ -164,21 +204,29 @@ mdb-bead-config {
 			height: 100%;
 			text-align: right;
 		}
+
+		.confirm-error {
+			margin-top: -15px;
+			margin-bottom: -2px;
+		}
 	}
 }
 
 mdb-color-selector {
 	position: absolute;
-	left: 40%;
-	width: 20%;
-	min-width: 100px;
+    left: 50%;
+	top: 10px;
+    transform: translate(-50%, 0);
 	min-height: 100px;
 	display: inline-block;
 	text-align: left;
-	border-color: @color-selector-border-color;
-	background-color: @color-selector-background;
-	color: @color-selector-text-color;
 	transition: opacity ease-in-out 0.2s;
+
+	> .content-wrap {
+		border-color: @color-selector-border-color;
+		background-color: @color-selector-background;
+		color: @color-selector-text-color;
+	}
 
 	.color-selector-title {
 		border-color: @color-selector-border-color;
@@ -186,13 +234,12 @@ mdb-color-selector {
 	}
 
 	.size-select .checkbox {
-		margin-top: 0px;
+		margin-top: 0;
 		margin-bottom: 4px;
 	}
 }
 
 .bead-thumbnail-wrapper, .bead-thumbnail {
-	height: 100%;
 	display: inline-block;
 	border-radius: 50%;
 	cursor: pointer;
@@ -211,8 +258,8 @@ mdb-color-selector {
 }
 
 .bead-thumbnail {
-	min-height: 40px;
-	max-height: 60px;
+	min-height: 30px;
+	max-height: 40px;
 }
 
 mdb-bead-config .btn-primary {
@@ -254,7 +301,7 @@ input[mdb-checkbox], input[mdb-radio] {
 	width: 100vw;
 	height: 100vh;
 	position: fixed;
-	z-index: 2;
+	z-index: 1000;
 	background-color: #ffffff;
 	background-color: rgba(0, 0, 0, 0.6);
 	top: 0;
@@ -268,7 +315,7 @@ input[mdb-checkbox], input[mdb-radio] {
 	border-top-color: black;
 	border-radius: 50%;
 	position: fixed;
-	z-index: 3;
+	z-index: 1001;
 	animation: spin 1s linear infinite;
 	left: ~'calc(50vw - 13px)';
 	top: ~'calc(50vh - 13px)';

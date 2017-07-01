@@ -29,15 +29,22 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	
 	register_rest_route($base, '/plugin-settings/', array(
 	    'methods' => 'GET',
-	    'callback' => array($this, 'get_plugin_settings')
+	    'callback' => array($this, 'get_plugin_settings'),
+	    'permission_callback' => array($this, 'is_admin')
 	));
 	register_rest_route($base, '/plugin-settings/', array(
 	    'methods' => 'PUT',
-	    'callback' => array($this, 'save_plugin_settings')
+	    'callback' => array($this, 'save_plugin_settings'),
+	    'permission_callback' => array($this, 'is_admin')
 	));
 	register_rest_route($base, '/plugin-settings/image/', array(
 	    'methods' => 'POST',
-	    'callback' => array($this, 'upload_image')
+	    'callback' => array($this, 'upload_image'),
+	    'permission_callback' => array($this, 'is_admin')
+	));
+	register_rest_route($base, '/configurator-data', array(
+	    'methods' => 'GET',
+	    'callback' => array($this, 'get_configurator_data')
 	));
 	register_rest_route($base, '/add-to-cart/', array(
 	    'methods' => 'POST',
@@ -54,11 +61,13 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	$colors = $this->get_product_colors($general['letter_bead_product']);
 	$letters = $this->get_product_letters($general['letter_bead_product']);
 	$beads = $this->get_beads($colors, $general['letter_bead_product']);
+	$laces = $this->get_laces($general['lace_product']);
 	
 	$settings = array(
 	    'general' => $general,
 	    'styling' => $styling,
-	    'beads' => $beads
+	    'beads' => $beads,
+	    'laces' => $laces
 	);
 	
 	$return = array(
@@ -96,16 +105,37 @@ class mdb_bead_config_controller extends WP_REST_Controller {
     }
     
     public function upload_image($request) {
-	$response = new WP_REST_Response();
-	
 	$params = $request->get_params();
 	$image = $request->get_file_params()['image'];
 	
-	if (!$this->save_image($image, $params['color'], $params['letter'], $params['product_id'])){
+	$image_info = $this->save_image($image, $params['color'], $params['letter']);
+	if ($image_info == null){
+	    $response = new WP_REST_Response();
 	    $response->set_status(500);
 	    return $response;
 	}
+	else {
+	    $this->link_to_wc($image_info, $params['color'], $params['variation_id']);
+	}
+	$response = new WP_REST_Response($params);
 	return $response;
+    }
+    
+    public function get_configurator_data($request) {
+	$bead_product_id = get_option('bead_config_letter_bead_product', '-1');
+	$lace_product_id = get_option('bead_config_lace_product', '-1');
+	$colors = $this->get_product_colors($bead_product_id);
+	$letters = $this->get_product_letters($bead_product_id);
+	$beads = $this->get_beads($colors, $bead_product_id);
+	$laces = $this->get_laces($lace_product_id);
+	
+	$return = array(
+	    'beads' => $beads,
+	    'laces' => $laces,
+	    'colors' => $colors,
+	    'letters' => $letters
+	);
+	return $return;
     }
     
     public function add_to_cart($request) {
@@ -120,6 +150,7 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	    $response->set_status(500);
 	    return $response;
 	}
+	
 	$necklace_length = count($necklace);
 	for ($index = 0; $index < $necklace_length; $index++) {
 	    $bead = $necklace[$index];
@@ -132,11 +163,18 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	    return $response;
 	    }
 	}
-	if (!$woocommerce->cart->add_to_cart($lace_product_id)) {
+	$lace_added = $woocommerce->cart->add_to_cart($lace_product_id, 1, $lace_type['variation_id'], array(
+	    'veter_type' => $lace_type['type']
+	));
+	if (!$lace_added) {
 	    $response->set_status(500);
 	    return $response;
 	}
 	return $response;
+    }
+    
+    public function is_admin() {
+	return current_user_can('administrator');
     }
     
     private function get_general_settings($page_id) {
@@ -168,12 +206,17 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	return $result;
     }
     
+    private function get_laces($lace_product_id) {
+	$lace_product = new WC_Product_Variable($lace_product_id);
+	return $lace_product->get_available_variations();
+    }
+    
     private function get_product_colors($bead_product_id) {
-	return wc_get_product_terms($bead_product_id, 'pa_kleur');
+	return wp_get_post_terms($bead_product_id, 'pa_kleur');
     }
 
     private function get_product_letters($bead_product_id) {
-	return wc_get_product_terms($bead_product_id, 'pa_letter');
+	return wp_get_post_terms($bead_product_id, 'pa_letter');
     }
     
     private function get_bead_images($color, $bead_product_id) {
@@ -201,7 +244,7 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	$query = "SELECT PT2.ID AS variation_id, x.color, x.letter, x.price, IT.image_location 
 		  FROM " . $post_table . " PT 
 		  JOIN " . $post_table . " PT2 ON PT.ID = PT2.post_parent 
-		  JOIN (SELECT PMT.post_id, PMT.meta_value AS color, PMT2.meta_value AS letter, PMT3.meta_value AS price 
+		  LEFT OUTER JOIN (SELECT PMT.post_id, PMT.meta_value AS color, PMT2.meta_value AS letter, PMT3.meta_value AS price 
 			FROM " . $postmeta_table . " PMT 
 			JOIN " . $postmeta_table . " PMT2 ON PMT.post_id = PMT2.post_id 
 			JOIN " . $postmeta_table . " PMT3 ON PMT.post_id = PMT3.post_id
@@ -210,9 +253,11 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 			AND PMT3.meta_key = '_price'
 			AND PMT.meta_value = '" . $color . "') x 
 			ON PT2.ID = x.post_id 
-		  JOIN " . $image_table . " IT ON x.color = IT.color AND x.letter = IT.letter 
-		  WHERE PT.ID = " . $bead_product_id;
-	
+		  LEFT OUTER JOIN " . $image_table . " IT ON x.color = IT.color AND x.letter = IT.letter 
+		  WHERE PT.ID = " . $bead_product_id . "
+		  AND x.letter IS NOT NULL
+		  AND x.letter <> ''
+		  ORDER BY x.letter ASC;";
 	$result = $wpdb->get_results($query, ARRAY_A);
 	return $result;
     }
@@ -221,13 +266,18 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	$extension = pathinfo($image['name'], PATHINFO_EXTENSION);
 	$uploads_dir = 'wp-content/uploads/mdb-bead-config/' . $color;
 	if (!wp_mkdir_p(ABSPATH . $uploads_dir)) {
-	    return false;
+	    return null;
 	}
 	$destination = $uploads_dir . '/' . $letter . '.' . $extension;
 	if (!move_uploaded_file($image['tmp_name'], ABSPATH . $destination)) {
-	    return false;
+	    return null;
 	}
-	return $this->update_database_image($color, $letter, $destination);
+	if ($this->update_database_image($color, $letter, $destination)) {
+	    return array('file' => $destination, 'filetype' => wp_check_filetype(basename($destination), null));
+	}
+	else {
+	    return null;
+	}
     }
     
     private function update_database_image($color, $letter, $image_loc) {
@@ -240,5 +290,27 @@ class mdb_bead_config_controller extends WP_REST_Controller {
 	);
 	$format = array('%s', '%s', '%s');
 	return $wpdb->replace($table, $data, $format);
+    }
+    
+    private function link_to_wc($file_info, $color, $variation_id) {
+	$filename = $file_info['file'];
+	$filetype = $file_info['filetype'];
+	$upload_dir = wp_upload_dir()['baseurl'] . '/mdb-bead-config/' . $color;
+	$attachment = array(
+	    'guid' => $upload_dir . '/' . basename($filename),
+	    'post_mime_type' => $filetype['type'],
+	    'post_title' => preg_replace('/\.[^.]+$/', '', basename($filename)),
+	    'post_content' => '',
+	    'post_status' => 'inherit'
+	);
+	
+	$attach_id = wp_insert_attachment($attachment, $filename, $variation_id);
+	
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	
+	$attach_data = wp_generate_attachment_metadata($attach_id, $filename);
+	wp_update_attachment_metadata($attach_id, $attach_data);
+	
+	set_post_thumbnail($variation_id, $attach_id);
     }
 }

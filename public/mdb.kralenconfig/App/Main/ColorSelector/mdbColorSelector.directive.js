@@ -11,7 +11,7 @@
 				if (!attrs.templateUrl)
 					throw new Error('No template url provided!');
 
-				return attrs.templateUrl;
+				return baseUrl + attrs.templateUrl;
 			},
 			link: linkFunc
 		};
@@ -25,7 +25,7 @@
 					scope.beads = beadService.getBeadsByLetter(selectedBead.letter);
 			});
 
-			element.on('click', function (evt) {
+			element.find('.content-wrap').on('click', function (evt) {
 				evt.stopPropagation();
 			});
 

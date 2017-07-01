@@ -112,16 +112,16 @@
 			    </div>
 			</div>
 			<div ng-show="ctrl.color_line === color.slug" ng-repeat="color in ctrl.colors">
-			    <div class="form-group letter-group" ng-repeat="letter in ctrl.letters">
-				<label for="{{color.slug}}_{{letter}}" class="control-label col-xs-2" ng-class="{ 'lower': (ctrl.settings.beads[color.slug][letter].image !== undefined || ctrl.settings.beads[color.slug][letter].image_location) }">{{letter}}</label>
+			    <div class="form-group letter-group" ng-repeat="bead in ctrl.settings.beads[color.slug]">
+				<label for="{{color.slug}}_{{bead.letter}}" class="control-label col-xs-2" ng-class="{ 'lower': (ctrl.settings.beads[color.slug][bead.letter].image !== undefined || ctrl.settings.beads[color.slug][bead.letter].image_location) }">{{bead.letter}}</label>
 				<div type="text" class="btn btn-default"
-				     ng-model="ctrl.settings.beads[color.slug][letter].image" 
-				     name="{{color.slug}}_{{letter}}" required
+				     ng-model="ctrl.settings.beads[color.slug][bead.letter].image" 
+				     name="{{color.slug}}_{{bead.letter}}" required
 				     ngf-select ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="1MB">Kies afbeelding</div>
-				<img ngf-thumbnail="ctrl.settings.beads[color.slug][letter].image" 
+				<img ngf-thumbnail="ctrl.settings.beads[color.slug][bead.letter].image" 
 				     class="thumb"/>
-				<img ng-src="/{{ctrl.settings.beads[color.slug][letter].image_location}}" 
-				     ng-show="ctrl.settings.beads[color.slug][letter].image_location && (ctrl.settings.beads[color.slug][letter].image === null || ctrl.settings.beads[color.slug][letter].image === undefined)" 
+				<img ng-src="/{{ctrl.settings.beads[color.slug][bead.letter].imageUrl}}" 
+				     ng-show="ctrl.settings.beads[color.slug][bead.letter].imageUrl && (ctrl.settings.beads[color.slug][bead.letter].image === null || ctrl.settings.beads[color.slug][bead.letter].image === undefined)" 
 				     class="thumb"/>
 			    </div>
 

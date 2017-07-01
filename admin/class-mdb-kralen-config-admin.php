@@ -97,12 +97,17 @@ class Mdb_Kralen_Config_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		wp_enqueue_script('angular', plugin_dir_url(__FILE__) . 'angular/angular.min.js', array('jquery') , '1.5.11', true);
-		wp_enqueue_script('bootstrap', plugin_dir_url(__FILE__) . 'bootstrap/js/bootstrap.min.js', array() , '3.3.7', true);
-		wp_enqueue_script('bootstrap-colorpicker', plugin_dir_url(__FILE__) . 'colorpicker/js/bootstrap-colorpicker.min.js', array('jquery', 'bootstrap') , '2.5.1', true);
+		wp_localize_script('wp-api', 'wpApiSettings', array(
+		    'root' => esc_url_raw(rest_url()),
+		    'nonce' => wp_create_nonce('wp_rest')
+		));
+		wp_enqueue_script('wp-api');
+		wp_enqueue_script('angular', plugin_dir_url(__FILE__) . 'angular/angular.js', array('jquery') , '1.5.11', true);
+		wp_enqueue_script('bootstrap', plugin_dir_url(__FILE__) . 'bootstrap/js/bootstrap.js', array() , '3.3.7', true);
+		wp_enqueue_script('bootstrap-colorpicker', plugin_dir_url(__FILE__) . 'colorpicker/js/bootstrap-colorpicker.js', array('jquery', 'bootstrap') , '2.5.1', true);
 		wp_enqueue_script('ng-file-upload', plugin_dir_url(__FILE__) . 'ng-file-upload/ng-file-upload.js', array('angular') , '12.2.13', true);
 		wp_enqueue_script('beadconfig-settings', plugin_dir_url(__FILE__) . 'js/mdb-bead-config-settings.js', array('angular', 'ng-file-upload') , '1.0', true);
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mdb-kralen-config-admin.js', array( 'jquery', 'angular', 'bootstrap', 'bootstrap-colorpicker' ), $this->version, false );
+		wp_enqueue_script($this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/mdb-kralen-config-admin.js', array( 'jquery', 'angular', 'bootstrap', 'bootstrap-colorpicker' ), $this->version, false);
 	}
 
         public function add_plugin_admin_menu() {

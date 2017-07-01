@@ -1,4 +1,4 @@
-﻿var debug = true;
+﻿var debug = false;
 var baseUrl = '/wp-content/plugins/mdb-kralen-config/public';
 if (debug) {
 	baseUrl = 'http://localhost:50049/';

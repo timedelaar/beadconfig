@@ -23,10 +23,12 @@
 			});
 		}
 
-		function uploadImage(image, color, letter, productId) {
+		function uploadImage(image, color, letter, variationId) {
+			if (!image)
+				throw new Error('No image provided for color: ' + color + ', letter: ' + letter);
 			return Upload.upload({
 				url: '/wp-json/bead-config/v1/plugin-settings/image/',
-				data: { image: image, color: color, letter: letter, product_id: productId }
+				data: { image: image, color: color, letter: letter, variation_id: variationId }
 			});
 		}
 	}

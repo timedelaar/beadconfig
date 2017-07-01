@@ -5,7 +5,7 @@
 		var directive = {
 			restrict: 'E',
 			require: '^mdbBeadConfig',
-			templateUrl: baseUrl + '/Templates/mdbBead.html',
+			templateUrl: baseUrl + '/templates/mdbBead.html',
 			compile: compileFunc
 		};
 
@@ -19,22 +19,39 @@
 		function linkFunc(scope, element, attrs, ctrl) {
 			var bead = $parse(attrs.bead)(scope);
 
+			element.find('img').on('load', function (evt) {
+				bead.originalWidth = evt.target.naturalWidth;
+				bead.originalHeight = evt.target.naturalHeight;
+				ctrl.positionBeads(ctrl.necklace);
+				scope.$apply();
+			});
+
+			bead.maxWidth = parseInt(element.css('max-width').replace('px', ''));
+			bead.minWidth = parseInt(element.css('min-width').replace('px', ''));
+
+			if (bead.letter === '_') {
+				element.css('min-width', 'unset');
+			}
+
 			scope.setColor = setColor;
+
+			scope.$watch('bead.letter', function (newLetter, oldLetter) {
+				if (newLetter === '_') {
+					element.css('min-width', 'unset');
+				}
+				else if (oldLetter === '_') {
+					element.css('min-width', bead.minWidth + 'px');
+				}
+			});
 
 			scope.$watch('bead.position', function (position) {
 				if (!position)
 					return;
 
-				element.width(position.size);
-				element.height(position.size);
-				element.css({ 'left': position.x + position.correctionX, 'top': position.y + position.correctionY, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
+				element.width(bead.width);
+				element.height(bead.height);
+				element.css({ 'left': position.x + position.correctionX - bead.width / 2, 'top': position.y + position.correctionY - bead.height, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
 			}, true);
-
-			//scope.$watch('total', function (newVal, oldVal) {
-			//	var x = (scope.index - ((scope.total - 1) / 2)) * 5.7435;
-			//	var y = calcY(x);
-			//	element.css({ 'top': -y, 'left': x });
-			//});
 
 			element.on('click', select);
 
@@ -78,6 +95,7 @@
 
 			scope.$on('$destroy', function () {
 				closeSelectListener();
+				ctrl.positionBeads(ctrl.necklace);
 			});
 		}
 	}
