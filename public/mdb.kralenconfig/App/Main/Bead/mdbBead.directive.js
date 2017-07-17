@@ -18,6 +18,7 @@
 
 		function linkFunc(scope, element, attrs, ctrl) {
 			var bead = $parse(attrs.bead)(scope);
+			element.css({ 'opacity': 0 });
 
 			element.find('img').on('load', function (evt) {
 				bead.originalWidth = evt.target.naturalWidth;
@@ -31,6 +32,7 @@
 
 			if (bead.letter === '_') {
 				element.css('min-width', 'unset');
+				element.addClass('small');
 			}
 
 			scope.setColor = setColor;
@@ -38,9 +40,13 @@
 			scope.$watch('bead.letter', function (newLetter, oldLetter) {
 				if (newLetter === '_') {
 					element.css('min-width', 'unset');
+					element.addClass('small');
+					bead.maxWidth = parseInt(element.css('max-width').replace('px', ''));
 				}
 				else if (oldLetter === '_') {
 					element.css('min-width', bead.minWidth + 'px');
+					element.removeClass('small');
+					bead.maxWidth = parseInt(element.css('max-width').replace('px', ''));
 				}
 			});
 

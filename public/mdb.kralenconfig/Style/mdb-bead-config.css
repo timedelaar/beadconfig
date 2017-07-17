@@ -209,6 +209,9 @@ mdb-bead-config .bead {
   cursor: pointer;
   z-index: 2;
 }
+mdb-bead-config .bead.small {
+  max-width: 75px;
+}
 mdb-bead-config .bead img {
   height: 100%;
   width: 100%;

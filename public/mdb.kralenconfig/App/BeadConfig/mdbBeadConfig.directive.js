@@ -21,8 +21,6 @@
 				$rootScope.$emit('beadSelected');
 			});
 
-			scope.$watch('ctrl.necklaceText', ctrl.convertToBeads);
-
 			angular.element($window).on('resize', function () {
 				$timeout(function () {
 					ctrl.updateCenter(element);

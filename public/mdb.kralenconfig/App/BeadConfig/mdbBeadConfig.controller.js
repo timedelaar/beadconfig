@@ -5,6 +5,7 @@
 		var ctrl = this;
 
 		var cx, cy, ratio, paddingLeft, paddingTop, paddingRight, paddingBottom;
+		var oldStart, oldEnd, newStart, newEnd;
 
 		ctrl.selectedBead = null;
 
@@ -28,8 +29,11 @@
 
 		ctrl.updateCenter = updateCenter;
 		ctrl.updatePadding = updatePadding;
-		ctrl.convertToBeads = convertToBeads;
 		ctrl.positionBeads = positionBeads;
+
+		ctrl.removeBeads = removeBeads;
+		ctrl.addBead = addBead;
+		ctrl.preventPaste = preventPaste;
 
 		load();
 		window.onbeforeunload = save;
@@ -42,12 +46,12 @@
 
 		function updatePrices(necklace) {
 			var total = 0;
-			var laceSum = 1;
+			var laceSum = ctrl.laceType ? ctrl.laceType.display_price : 0;
 			var letterBeadsSum = 0;
 			var spacerBeadsSmallSum = 0;
 			var spacerBeadsBigSum = 0;
 
-			var lace = 1;
+			var lace = ctrl.laceType ? 1 : 0;
 			var letterBeads = 0;
 			var spacerBeadsSmall = 0;
 			var spacerBeadsBig = 0;
@@ -210,31 +214,43 @@
 			paddingBottom = parseInt(getComputedStyle(necklace[0]).paddingBottom.replace('px', ''));
 		}
 
-		function convertToBeads(text) {
+		function removeBeads(evt) {
 			ctrl.confirm = false;
 			ctrl.displayError = false;
-			if (angular.isDefined(text) && text !== null) {
-				ctrl.imagesLoaded = 0;
-				var necklace = ctrl.necklace;
-				var newLength = text.length;
-				if (newLength < necklace.length) {
-					necklace.splice(newLength, necklace.length - newLength);
-				}
-				for (var i = 0, l = newLength; i < l; i++) {
-					var bead = necklace[i];
-					var letter = text[i];
-					if (!bead) {
-						necklace[i] = new Bead(beadService.getBead(ctrl.defaultColor, letter));
-					}
-					else if (bead.letter !== letter) {
-						if (bead.letter === '_' && letter === ' ')
-							continue;
-						var newBead = new Bead(beadService.getBead(bead.color, letter));
-						bead.letter = newBead.letter;
-						bead.image_location = newBead.image_location;
-					}
+			var start = evt.currentTarget.selectionStart;
+			var end = evt.currentTarget.selectionEnd;
+			if (start === end && evt.which === 8) {
+				if (start > 0) {
+					ctrl.necklace.splice(start - 1, 1);
 				}
 			}
+			else if (start === end && evt.which === 46) {
+				if (start < ctrl.necklace.length) {
+					ctrl.necklace.splice(start, 1);
+				}
+			}
+			else {
+				ctrl.necklace.splice(start, end - start);
+			}
+			ctrl.positionBeads(ctrl.necklace);
+		}
+
+		function addBead(evt) {
+			var start = evt.currentTarget.selectionStart;
+			var letter = String.fromCharCode(evt.charCode);
+			var bead = new Bead(beadService.getBead(ctrl.defaultColor, letter));
+			if (ctrl.necklace.length > 0) {
+				bead.position = angular.copy(ctrl.necklace[0].position);
+				bead.width = ctrl.necklace[0].width;
+				bead.height = ctrl.necklace[0].height;
+			}
+			ctrl.necklace.splice(start, 0, bead);
+			ctrl.positionBeads(ctrl.necklace);
+		}
+
+		function preventPaste(evt) {
+			evt.preventDefault();
+			return false;
 		}
 
 		function positionBeads(necklace) {

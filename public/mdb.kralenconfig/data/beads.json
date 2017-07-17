@@ -7,7 +7,8 @@
 			},
 			"image": {
 				"thumb_src": "Images/laces/round.jpg"
-			}
+			},
+			"display_price": 2
 		},
 		{
 			"variation_id": 2,
@@ -16,7 +17,8 @@
 			},
 			"image": {
 				"thumb_src": "Images/laces/square.jpg"
-			}
+			},
+			"display_price": 2
 		}
 	],
 	"beads": {

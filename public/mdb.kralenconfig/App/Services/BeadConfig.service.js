@@ -38,7 +38,7 @@
 				for (var index = 0, length = response.data.laces.length; index < length; index++) {
 					var lace = response.data.laces[index];
 					var image = lace.image ? lace.image.thumb_src : lace.image_src;
-					laces.push({ 'type': lace.attributes.attribute_pa_veter_type, 'variationId': lace.variation_id, 'image_src': image });
+					laces.push({ 'type': lace.attributes.attribute_pa_veter_type, 'variationId': lace.variation_id, 'image_src': image, 'display_price': lace.display_price });
 				}
 			}, function error(response) {
 				console.log('Error loading beads', response);

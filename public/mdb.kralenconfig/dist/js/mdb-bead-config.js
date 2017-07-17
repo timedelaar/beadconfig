@@ -1,4 +1,4 @@
-var debug = false;
+var debug = true;
 var baseUrl = '/wp-content/plugins/mdb-kralen-config/public';
 if (debug) {
 	baseUrl = 'http://localhost:50049/';
@@ -14,6 +14,7 @@ if (debug) {
 		var ctrl = this;
 
 		var cx, cy, ratio, paddingLeft, paddingTop, paddingRight, paddingBottom;
+		var oldStart, oldEnd, newStart, newEnd;
 
 		ctrl.selectedBead = null;
 
@@ -37,8 +38,11 @@ if (debug) {
 
 		ctrl.updateCenter = updateCenter;
 		ctrl.updatePadding = updatePadding;
-		ctrl.convertToBeads = convertToBeads;
 		ctrl.positionBeads = positionBeads;
+
+		ctrl.removeBeads = removeBeads;
+		ctrl.addBead = addBead;
+		ctrl.preventPaste = preventPaste;
 
 		load();
 		window.onbeforeunload = save;
@@ -51,12 +55,12 @@ if (debug) {
 
 		function updatePrices(necklace) {
 			var total = 0;
-			var laceSum = 1;
+			var laceSum = ctrl.laceType ? ctrl.laceType.display_price : 0;
 			var letterBeadsSum = 0;
 			var spacerBeadsSmallSum = 0;
 			var spacerBeadsBigSum = 0;
 
-			var lace = 1;
+			var lace = ctrl.laceType ? 1 : 0;
 			var letterBeads = 0;
 			var spacerBeadsSmall = 0;
 			var spacerBeadsBig = 0;
@@ -219,31 +223,43 @@ if (debug) {
 			paddingBottom = parseInt(getComputedStyle(necklace[0]).paddingBottom.replace('px', ''));
 		}
 
-		function convertToBeads(text) {
+		function removeBeads(evt) {
 			ctrl.confirm = false;
 			ctrl.displayError = false;
-			if (angular.isDefined(text) && text !== null) {
-				ctrl.imagesLoaded = 0;
-				var necklace = ctrl.necklace;
-				var newLength = text.length;
-				if (newLength < necklace.length) {
-					necklace.splice(newLength, necklace.length - newLength);
-				}
-				for (var i = 0, l = newLength; i < l; i++) {
-					var bead = necklace[i];
-					var letter = text[i];
-					if (!bead) {
-						necklace[i] = new Bead(beadService.getBead(ctrl.defaultColor, letter));
-					}
-					else if (bead.letter !== letter) {
-						if (bead.letter === '_' && letter === ' ')
-							continue;
-						var newBead = new Bead(beadService.getBead(bead.color, letter));
-						bead.letter = newBead.letter;
-						bead.image_location = newBead.image_location;
-					}
+			var start = evt.currentTarget.selectionStart;
+			var end = evt.currentTarget.selectionEnd;
+			if (start === end && evt.which === 8) {
+				if (start > 0) {
+					ctrl.necklace.splice(start - 1, 1);
 				}
 			}
+			else if (start === end && evt.which === 46) {
+				if (start < ctrl.necklace.length) {
+					ctrl.necklace.splice(start, 1);
+				}
+			}
+			else {
+				ctrl.necklace.splice(start, end - start);
+			}
+			ctrl.positionBeads(ctrl.necklace);
+		}
+
+		function addBead(evt) {
+			var start = evt.currentTarget.selectionStart;
+			var letter = String.fromCharCode(evt.charCode);
+			var bead = new Bead(beadService.getBead(ctrl.defaultColor, letter));
+			if (ctrl.necklace.length > 0) {
+				bead.position = angular.copy(ctrl.necklace[0].position);
+				bead.width = ctrl.necklace[0].width;
+				bead.height = ctrl.necklace[0].height;
+			}
+			ctrl.necklace.splice(start, 0, bead);
+			ctrl.positionBeads(ctrl.necklace);
+		}
+
+		function preventPaste(evt) {
+			evt.preventDefault();
+			return false;
 		}
 
 		function positionBeads(necklace) {
@@ -407,8 +423,6 @@ if (debug) {
 				$rootScope.$emit('beadSelected');
 			});
 
-			scope.$watch('ctrl.necklaceText', ctrl.convertToBeads);
-
 			angular.element($window).on('resize', function () {
 				$timeout(function () {
 					ctrl.updateCenter(element);
@@ -438,6 +452,7 @@ if (debug) {
 
 		function linkFunc(scope, element, attrs, ctrl) {
 			var bead = $parse(attrs.bead)(scope);
+			element.css({ 'opacity': 0 });
 
 			element.find('img').on('load', function (evt) {
 				bead.originalWidth = evt.target.naturalWidth;
@@ -451,6 +466,7 @@ if (debug) {
 
 			if (bead.letter === '_') {
 				element.css('min-width', 'unset');
+				element.addClass('small');
 			}
 
 			scope.setColor = setColor;
@@ -458,9 +474,13 @@ if (debug) {
 			scope.$watch('bead.letter', function (newLetter, oldLetter) {
 				if (newLetter === '_') {
 					element.css('min-width', 'unset');
+					element.addClass('small');
+					bead.maxWidth = parseInt(element.css('max-width').replace('px', ''));
 				}
 				else if (oldLetter === '_') {
 					element.css('min-width', bead.minWidth + 'px');
+					element.removeClass('small');
+					bead.maxWidth = parseInt(element.css('max-width').replace('px', ''));
 				}
 			});
 
@@ -621,7 +641,7 @@ if (debug) {
 				for (var index = 0, length = response.data.laces.length; index < length; index++) {
 					var lace = response.data.laces[index];
 					var image = lace.image ? lace.image.thumb_src : lace.image_src;
-					laces.push({ 'type': lace.attributes.attribute_pa_veter_type, 'variationId': lace.variation_id, 'image_src': image });
+					laces.push({ 'type': lace.attributes.attribute_pa_veter_type, 'variationId': lace.variation_id, 'image_src': image, 'display_price': lace.display_price });
 				}
 			}, function error(response) {
 				console.log('Error loading beads', response);

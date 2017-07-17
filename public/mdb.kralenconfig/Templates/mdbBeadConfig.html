@@ -2,11 +2,22 @@
 	<div class="row">
 		<div class="form-group col-xs-8 col-md-12">
 			<label for="NecklaceText">Tekst</label>
-			<input type="text" class="form-control" ng-model="ctrl.necklaceText" ng-trim="false" id="NecklaceText" />
+			<input type="text" 
+				   class="form-control"
+				   ng-keydown="ctrl.removeBeads($event)"
+				   ng-keypress="ctrl.addBead($event)"
+				   ng-model="ctrl.necklaceText"
+				   ng-trim="false"
+				   ng-paste="ctrl.preventPaste($event)"
+				   id="NecklaceText" />
 		</div>
 		<div class="form-group col-xs-4 col-md-12">
 			<label for="LaceType">Veter type</label>
-			<select class="form-control" ng-model="ctrl.laceType" ng-options="lace as lace.type for lace in ctrl.getLaces() track by lace.variationId">
+			<select class="form-control" 
+					ng-model="ctrl.laceType" 
+					ng-options="lace as lace.type for lace in ctrl.getLaces() track by lace.variationId"
+					ng-change="ctrl.updatePrices()">
+				<option value="">geen veter</option>
 			</select>
 		</div>
 		<div class="form-group col-md-12 hidden-xs hidden-sm">
