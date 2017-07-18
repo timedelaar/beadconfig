@@ -21,8 +21,7 @@
 							 ng-click="ctrl.selectedBead.setColor(beads[$index].color)" />
 					</div>
 				</td>
-				<td
-					 ng-if="beads.length > ($index + 1)">
+				<td ng-if="beads.length > ($index + 1)">
 					<div class="bead-thumbnail-wrapper"
 						 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 1].color}">
 						<img class="bead-thumbnail"
@@ -32,8 +31,7 @@
 							 ng-click="ctrl.selectedBead.setColor(beads[$index + 1].color)" />
 					</div>
 				</td>
-				<td
-					 ng-if="beads.length > ($index + 2)">
+				<td ng-if="beads.length > ($index + 2)">
 					<div class="bead-thumbnail-wrapper"
 						 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 2].color}">
 						<img class="bead-thumbnail"
@@ -43,8 +41,7 @@
 							 ng-click="ctrl.selectedBead.setColor(beads[$index + 2].color)" />
 					</div>
 				</td>
-				<td
-					 ng-if="beads.length > ($index + 3)">
+				<td ng-if="beads.length > ($index + 3)">
 					<div class="bead-thumbnail-wrapper"
 						 ng-class="{ 'current': ctrl.selectedBead.color === beads[$index + 3].color}">
 						<img class="bead-thumbnail"

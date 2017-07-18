@@ -25,6 +25,7 @@
 		"army_green": {
 			"_": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "_",
 				"image_location": "Images/army_green/_.png",
 				"price": 2.00,
@@ -33,6 +34,7 @@
 			},
 			"0": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "0",
 				"image_location": "Images/army_green/0.png",
 				"price": 4.00,
@@ -40,6 +42,7 @@
 			},
 			"1": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "1",
 				"image_location": "Images/army_green/1.png",
 				"price": 4.00,
@@ -47,6 +50,7 @@
 			},
 			"2": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "2",
 				"image_location": "Images/army_green/2.png",
 				"price": 4.00,
@@ -54,6 +58,7 @@
 			},
 			"3": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "3",
 				"image_location": "Images/army_green/3.png",
 				"price": 4.00,
@@ -61,6 +66,7 @@
 			},
 			"4": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "4",
 				"image_location": "Images/army_green/4.png",
 				"price": 4.00,
@@ -68,6 +74,7 @@
 			},
 			"5": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "5",
 				"image_location": "Images/army_green/5.png",
 				"price": 4.00,
@@ -75,6 +82,7 @@
 			},
 			"6": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "6",
 				"image_location": "Images/army_green/6.png",
 				"price": 4.00,
@@ -82,6 +90,7 @@
 			},
 			"7": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "7",
 				"image_location": "Images/army_green/7.png",
 				"price": 4.00,
@@ -89,6 +98,7 @@
 			},
 			"8": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "8",
 				"image_location": "Images/army_green/8.png",
 				"price": 4.00,
@@ -96,6 +106,7 @@
 			},
 			"9": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "9",
 				"image_location": "Images/army_green/9.png",
 				"price": 4.00,
@@ -103,6 +114,7 @@
 			},
 			"a": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "a",
 				"image_location": "Images/army_green/a.png",
 				"price": 4.00,
@@ -110,6 +122,7 @@
 			},
 			"b": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "b",
 				"image_location": "Images/army_green/b.png",
 				"price": 4.00,
@@ -117,6 +130,7 @@
 			},
 			"c": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "c",
 				"image_location": "Images/army_green/c.png",
 				"price": 4.00,
@@ -124,6 +138,7 @@
 			},
 			"d": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "d",
 				"image_location": "Images/army_green/d.png",
 				"price": 4.00,
@@ -131,6 +146,7 @@
 			},
 			"e": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "e",
 				"image_location": "Images/army_green/e.png",
 				"price": 4.00,
@@ -138,6 +154,7 @@
 			},
 			"f": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "f",
 				"image_location": "Images/army_green/f.png",
 				"price": 4.00,
@@ -145,6 +162,7 @@
 			},
 			"g": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "g",
 				"image_location": "Images/army_green/g.png",
 				"price": 4.00,
@@ -152,6 +170,7 @@
 			},
 			"h": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "h",
 				"image_location": "Images/army_green/h.png",
 				"price": 4.00,
@@ -159,6 +178,7 @@
 			},
 			"i": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "i",
 				"image_location": "Images/army_green/i.png",
 				"price": 4.00,
@@ -166,6 +186,7 @@
 			},
 			"j": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "j",
 				"image_location": "Images/army_green/j.png",
 				"price": 4.00,
@@ -173,6 +194,7 @@
 			},
 			"k": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "k",
 				"image_location": "Images/army_green/k.png",
 				"price": 4.00,
@@ -180,6 +202,7 @@
 			},
 			"l": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "l",
 				"image_location": "Images/army_green/l.png",
 				"price": 4.00,
@@ -187,6 +210,7 @@
 			},
 			"m": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "m",
 				"image_location": "Images/army_green/m.png",
 				"price": 4.00,
@@ -194,6 +218,7 @@
 			},
 			"n": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "n",
 				"image_location": "Images/army_green/n.png",
 				"price": 4.00,
@@ -201,6 +226,7 @@
 			},
 			"o": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "o",
 				"image_location": "Images/army_green/o.png",
 				"price": 4.00,
@@ -208,6 +234,7 @@
 			},
 			"p": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "p",
 				"image_location": "Images/army_green/p.png",
 				"price": 4.00,
@@ -215,6 +242,7 @@
 			},
 			"q": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "q",
 				"image_location": "Images/army_green/q.png",
 				"price": 4.00,
@@ -222,6 +250,7 @@
 			},
 			"r": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "r",
 				"image_location": "Images/army_green/r.png",
 				"price": 4.00,
@@ -229,6 +258,7 @@
 			},
 			"s": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "s",
 				"image_location": "Images/army_green/s.png",
 				"price": 4.00,
@@ -236,6 +266,7 @@
 			},
 			"t": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "t",
 				"image_location": "Images/army_green/t.png",
 				"price": 4.00,
@@ -243,6 +274,7 @@
 			},
 			"u": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "u",
 				"image_location": "Images/army_green/u.png",
 				"price": 4.00,
@@ -250,6 +282,7 @@
 			},
 			"v": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "v",
 				"image_location": "Images/army_green/v.png",
 				"price": 4.00,
@@ -257,6 +290,7 @@
 			},
 			"w": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "w",
 				"image_location": "Images/army_green/w.png",
 				"price": 4.00,
@@ -264,6 +298,7 @@
 			},
 			"x": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "x",
 				"image_location": "Images/army_green/x.png",
 				"price": 4.00,
@@ -271,6 +306,7 @@
 			},
 			"y": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "y",
 				"image_location": "Images/army_green/y.png",
 				"price": 4.00,
@@ -278,6 +314,7 @@
 			},
 			"z": {
 				"color": "army_green",
+				"order": 1,
 				"letter": "z",
 				"image_location": "Images/army_green/z.png",
 				"price": 4.00,
@@ -287,6 +324,7 @@
 		"petrol_blue": {
 			"_": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "_",
 				"image_location": "Images/petrol_blue/_.png",
 				"price": 2.00,
@@ -295,6 +333,7 @@
 			},
 			"0": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "0",
 				"image_location": "Images/petrol_blue/0.png",
 				"price": 4.00,
@@ -302,6 +341,7 @@
 			},
 			"1": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "1",
 				"image_location": "Images/petrol_blue/1.png",
 				"price": 4.00,
@@ -309,6 +349,7 @@
 			},
 			"2": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "2",
 				"image_location": "Images/petrol_blue/2.png",
 				"price": 4.00,
@@ -316,6 +357,7 @@
 			},
 			"3": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "3",
 				"image_location": "Images/petrol_blue/3.png",
 				"price": 4.00,
@@ -323,6 +365,7 @@
 			},
 			"4": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "4",
 				"image_location": "Images/petrol_blue/4.png",
 				"price": 4.00,
@@ -330,6 +373,7 @@
 			},
 			"5": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "5",
 				"image_location": "Images/petrol_blue/5.png",
 				"price": 4.00,
@@ -337,6 +381,7 @@
 			},
 			"6": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "6",
 				"image_location": "Images/petrol_blue/6.png",
 				"price": 4.00,
@@ -344,6 +389,7 @@
 			},
 			"7": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "7",
 				"image_location": "Images/petrol_blue/7.png",
 				"price": 4.00,
@@ -351,6 +397,7 @@
 			},
 			"8": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "8",
 				"image_location": "Images/petrol_blue/8.png",
 				"price": 4.00,
@@ -358,6 +405,7 @@
 			},
 			"9": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "9",
 				"image_location": "Images/petrol_blue/9.png",
 				"price": 4.00,
@@ -365,6 +413,7 @@
 			},
 			"a": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "a",
 				"image_location": "Images/petrol_blue/a.png",
 				"price": 4.00,
@@ -372,6 +421,7 @@
 			},
 			"b": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "b",
 				"image_location": "Images/petrol_blue/b.png",
 				"price": 4.00,
@@ -379,6 +429,7 @@
 			},
 			"c": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "c",
 				"image_location": "Images/petrol_blue/c.png",
 				"price": 4.00,
@@ -386,6 +437,7 @@
 			},
 			"d": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "d",
 				"image_location": "Images/petrol_blue/d.png",
 				"price": 4.00,
@@ -393,6 +445,7 @@
 			},
 			"e": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "e",
 				"image_location": "Images/petrol_blue/e.png",
 				"price": 4.00,
@@ -400,6 +453,7 @@
 			},
 			"f": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "f",
 				"image_location": "Images/petrol_blue/f.png",
 				"price": 4.00,
@@ -407,6 +461,7 @@
 			},
 			"g": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "g",
 				"image_location": "Images/petrol_blue/g.png",
 				"price": 4.00,
@@ -414,6 +469,7 @@
 			},
 			"h": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "h",
 				"image_location": "Images/petrol_blue/h.png",
 				"price": 4.00,
@@ -421,6 +477,7 @@
 			},
 			"i": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "i",
 				"image_location": "Images/petrol_blue/i.png",
 				"price": 4.00,
@@ -428,6 +485,7 @@
 			},
 			"j": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "j",
 				"image_location": "Images/petrol_blue/j.png",
 				"price": 4.00,
@@ -435,6 +493,7 @@
 			},
 			"k": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "k",
 				"image_location": "Images/petrol_blue/k.png",
 				"price": 4.00,
@@ -442,6 +501,7 @@
 			},
 			"l": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "l",
 				"image_location": "Images/petrol_blue/l.png",
 				"price": 4.00,
@@ -449,6 +509,7 @@
 			},
 			"m": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "m",
 				"image_location": "Images/petrol_blue/m.png",
 				"price": 4.00,
@@ -456,6 +517,7 @@
 			},
 			"n": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "n",
 				"image_location": "Images/petrol_blue/n.png",
 				"price": 4.00,
@@ -463,6 +525,7 @@
 			},
 			"o": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "o",
 				"image_location": "Images/petrol_blue/o.png",
 				"price": 4.00,
@@ -470,6 +533,7 @@
 			},
 			"p": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "p",
 				"image_location": "Images/petrol_blue/p.png",
 				"price": 4.00,
@@ -477,6 +541,7 @@
 			},
 			"q": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "q",
 				"image_location": "Images/petrol_blue/q.png",
 				"price": 4.00,
@@ -484,6 +549,7 @@
 			},
 			"r": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "r",
 				"image_location": "Images/petrol_blue/r.png",
 				"price": 4.00,
@@ -491,6 +557,7 @@
 			},
 			"s": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "s",
 				"image_location": "Images/petrol_blue/s.png",
 				"price": 4.00,
@@ -498,6 +565,7 @@
 			},
 			"t": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "t",
 				"image_location": "Images/petrol_blue/t.png",
 				"price": 4.00,
@@ -505,6 +573,7 @@
 			},
 			"u": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "u",
 				"image_location": "Images/petrol_blue/u.png",
 				"price": 4.00,
@@ -512,6 +581,7 @@
 			},
 			"v": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "v",
 				"image_location": "Images/petrol_blue/v.png",
 				"price": 4.00,
@@ -519,6 +589,7 @@
 			},
 			"w": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "w",
 				"image_location": "Images/petrol_blue/w.png",
 				"price": 4.00,
@@ -526,6 +597,7 @@
 			},
 			"x": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "x",
 				"image_location": "Images/petrol_blue/x.png",
 				"price": 4.00,
@@ -533,6 +605,7 @@
 			},
 			"y": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "y",
 				"image_location": "Images/petrol_blue/y.png",
 				"price": 4.00,
@@ -540,6 +613,7 @@
 			},
 			"z": {
 				"color": "petrol_blue",
+				"order": 0,
 				"letter": "z",
 				"image_location": "Images/petrol_blue/z.png",
 				"price": 4.00,

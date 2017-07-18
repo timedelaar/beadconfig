@@ -24,7 +24,7 @@
 			angular.element($window).on('resize', function () {
 				$timeout(function () {
 					ctrl.updateCenter(element);
-					ctrl.positionBeads(ctrl.necklace);
+					//ctrl.positionBeads(ctrl.necklace);
 				});
 			});
 		}

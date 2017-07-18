@@ -13,8 +13,10 @@ if (debug) {
 	function Controller($scope, Bead, beadService, $window) {
 		var ctrl = this;
 
-		var cx, cy, ratio, paddingLeft, paddingTop, paddingRight, paddingBottom;
+		var cx, cy, paddingLeft, paddingTop, paddingRight, paddingBottom;
 		var oldStart, oldEnd, newStart, newEnd;
+
+		var allowedCharacters = /[a-zA-Z0-9\s]/;
 
 		ctrl.selectedBead = null;
 
@@ -231,30 +233,32 @@ if (debug) {
 			if (start === end && evt.which === 8) {
 				if (start > 0) {
 					ctrl.necklace.splice(start - 1, 1);
+					ctrl.positionBeads(ctrl.necklace);
 				}
 			}
 			else if (start === end && evt.which === 46) {
 				if (start < ctrl.necklace.length) {
 					ctrl.necklace.splice(start, 1);
+					ctrl.positionBeads(ctrl.necklace);
 				}
 			}
 			else {
-				ctrl.necklace.splice(start, end - start);
+				if (end - start) {
+					ctrl.necklace.splice(start, end - start);
+					ctrl.positionBeads(ctrl.necklace);
+				}
 			}
-			ctrl.positionBeads(ctrl.necklace);
 		}
 
 		function addBead(evt) {
-			var start = evt.currentTarget.selectionStart;
 			var letter = String.fromCharCode(evt.charCode);
-			var bead = new Bead(beadService.getBead(ctrl.defaultColor, letter));
-			if (ctrl.necklace.length > 0) {
-				bead.position = angular.copy(ctrl.necklace[0].position);
-				bead.width = ctrl.necklace[0].width;
-				bead.height = ctrl.necklace[0].height;
+			if (!allowedCharacters.test(letter)) {
+				evt.preventDefault();
+				return false;
 			}
+			var start = evt.currentTarget.selectionStart;
+			var bead = new Bead(beadService.getBead(ctrl.defaultColor, letter));
 			ctrl.necklace.splice(start, 0, bead);
-			ctrl.positionBeads(ctrl.necklace);
 		}
 
 		function preventPaste(evt) {
@@ -266,8 +270,10 @@ if (debug) {
 			if (!angular.isDefined(necklace) || necklace === null || necklace.length === 0)
 				return;
 
-
-			updateRatio(necklace);
+			var ratio = updateRatio(necklace);
+			if (!ratio) {
+				return;
+			}
 			var middle = getMiddleBead(necklace, ratio);
 			var start = Math.floor(middle.middleBead);
 			for (var i = start; i >= 0; i--) {
@@ -275,11 +281,15 @@ if (debug) {
 				var previousX, previousY, distance;
 				if (i === start) {
 					bead.position = getPosition(middle.offset, cx, cy, Math.sign(middle.offset * -1));
+					bead.width = bead.originalWidth * ratio;
+					bead.height = bead.originalHeight * ratio;
 				}
 				else {
 					previousX = necklace[i + 1].position.x;
 					previousY = necklace[i + 1].position.y;
-					distance = (bead.originalWidth * ratio + necklace[i + 1].originalWidth * ratio) / 2;
+					bead.width = bead.originalWidth * ratio;
+					bead.height = bead.originalHeight * ratio;
+					distance = (bead.width + necklace[i + 1].width) / 2 + 5 * ratio;
 					bead.position = getPosition(distance, previousX, previousY, -1);
 				}
 			}
@@ -287,30 +297,27 @@ if (debug) {
 				bead = necklace[i];
 				previousX = necklace[i - 1].position.x;
 				previousY = necklace[i - 1].position.y;
-				distance = (bead.originalWidth * ratio + necklace[i - 1].originalWidth * ratio) / 2;
+				bead.width = bead.originalWidth * ratio;
+				bead.height = bead.originalHeight * ratio;
+				distance = (bead.width + necklace[i - 1].width) / 2 + 5 * ratio;
 				bead.position = getPosition(distance, previousX, previousY, 1);
 			}
 
-			var correction = calculateCorrection(necklace);
-			for (i = 0, l = necklace.length; i < l; i++) {
-				bead = necklace[i];
-				bead.position.correctionX = correction.x;
-				bead.position.correctionY = correction.y;
-				bead.width = bead.originalWidth * ratio;
-				bead.height = bead.originalHeight * ratio;
-			}
+			ctrl.correction = calculateCorrection(necklace);
 		}
 
 		function updateRatio(necklace) {
+			var ratio = 1;
 			var space = cx * 2 - paddingLeft - paddingRight;
 			var necklaceSize = 0;
 			var originalBead = null;
 			for (var index = 0, length = necklace.length; index < length; index++) {
 				var bead = necklace[index];
-				if (bead.originalWidth) {
-					necklaceSize += bead.originalWidth;
+				if (!bead.originalWidth) {
+					return;
 				}
-				if (bead.letter !== '_') {
+				necklaceSize += bead.originalWidth;
+				if (bead.letter !== '_' && (!originalBead || bead.originalWidth > originalBead.originalWidth)) {
 					originalBead = bead;
 				}
 			}
@@ -324,6 +331,7 @@ if (debug) {
 			else if (originalBead.originalWidth * ratio > originalBead.maxWidth) {
 				ratio = originalBead.maxWidth / originalBead.originalWidth;
 			}
+			return ratio;
 		}
 
 		function getMiddleBead(necklace, ratio) {
@@ -355,21 +363,22 @@ if (debug) {
 			for (var index = 0, length = necklace.length; index < length; index++) {
 				if (necklace[index].letter !== '_') {
 					bead = necklace[index];
+					break;
 				}
 			}
 			if (!bead) {
 				bead = necklace[0];
 			}
-			var necklaceWidth = (bead.position.x - cx) * 2 + bead.originalWidth * ratio;
+			var necklaceWidth = (cx - necklace[0].position.x) * 2 + bead.width;
 			var windowWidth = cx * 2 - paddingLeft - paddingRight;
-			var correctionX = -(bead.originalWidth * ratio / 2);
+			var correctionX = 0;
 			if (necklaceWidth > windowWidth) {
 				correctionX += necklaceWidth / 2 - cx + paddingLeft;
 			}
 
 			var windowHeight = cy * 2 - paddingTop - paddingBottom;
-			var necklaceHeight = cy + bead.originalHeight * ratio - necklace[0].position.y;
-			var correctionY = necklaceHeight / 2; //TODO
+			var necklaceHeight = cy + bead.height - necklace[0].position.y;
+			var correctionY = necklaceHeight / 2;
 			if (necklaceHeight > windowHeight) {
 				correctionY += necklaceHeight / 2 - cy + paddingTop;
 			}
@@ -426,7 +435,7 @@ if (debug) {
 			angular.element($window).on('resize', function () {
 				$timeout(function () {
 					ctrl.updateCenter(element);
-					ctrl.positionBeads(ctrl.necklace);
+					//ctrl.positionBeads(ctrl.necklace);
 				});
 			});
 		}
@@ -490,7 +499,7 @@ if (debug) {
 
 				element.width(bead.width);
 				element.height(bead.height);
-				element.css({ 'left': position.x + position.correctionX - bead.width / 2, 'top': position.y + position.correctionY - bead.height, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
+				element.css({ 'left': position.x + ctrl.correction.x - bead.width / 2, 'top': position.y + ctrl.correction.y - bead.height, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
 			}, true);
 
 			element.on('click', select);
@@ -535,7 +544,6 @@ if (debug) {
 
 			scope.$on('$destroy', function () {
 				closeSelectListener();
-				ctrl.positionBeads(ctrl.necklace);
 			});
 		}
 	}
@@ -587,8 +595,12 @@ if (debug) {
 		function linkFunc(scope, element, attrs, ctrl) {
 			scope.beads = [];
 			scope.$watch('ctrl.selectedBead', function (selectedBead) {
-				if (selectedBead)
+				if (selectedBead) {
 					scope.beads = beadService.getBeadsByLetter(selectedBead.letter);
+					scope.beads.sort(function (bead1, bead2) {
+						return bead1.order - bead2.order;
+					});
+				}
 			});
 
 			element.find('.content-wrap').on('click', function (evt) {

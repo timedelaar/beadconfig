@@ -56,7 +56,7 @@
 
 				element.width(bead.width);
 				element.height(bead.height);
-				element.css({ 'left': position.x + position.correctionX - bead.width / 2, 'top': position.y + position.correctionY - bead.height, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
+				element.css({ 'left': position.x + ctrl.correction.x - bead.width / 2, 'top': position.y + ctrl.correction.y - bead.height, 'transform': 'rotate(' + position.rotation + 'deg)', 'opacity': 1 });
 			}, true);
 
 			element.on('click', select);
@@ -101,7 +101,6 @@
 
 			scope.$on('$destroy', function () {
 				closeSelectListener();
-				ctrl.positionBeads(ctrl.necklace);
 			});
 		}
 	}

@@ -21,8 +21,12 @@
 		function linkFunc(scope, element, attrs, ctrl) {
 			scope.beads = [];
 			scope.$watch('ctrl.selectedBead', function (selectedBead) {
-				if (selectedBead)
+				if (selectedBead) {
 					scope.beads = beadService.getBeadsByLetter(selectedBead.letter);
+					scope.beads.sort(function (bead1, bead2) {
+						return bead1.order - bead2.order;
+					});
+				}
 			});
 
 			element.find('.content-wrap').on('click', function (evt) {
